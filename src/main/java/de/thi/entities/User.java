@@ -1,21 +1,39 @@
 package de.thi.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user_entity")
 public class User {
     //User with a Username, Password and Email and a unique ID (ID hast to be long)
-    private String username;
-    private String password;
-    private String email;
 
+    @Id
+    @GeneratedValue
     private long id;
 
-    public User() {
-    }
+    @JsonProperty("username")
+    @Column(name = "username")
+    private String username;
+    @JsonProperty("password")
+    @Column(name = "password")
+    private String password;
+    @Column(name = "email")
+    @JsonProperty("email")
+    private String email;
 
-    public User(String username, String password, String email, long id) {
+    protected User() {
+    }
+    @JsonCreator
+    public User(@JsonProperty(value = "username") String username,
+                @JsonProperty(value = "password") String password,
+                @JsonProperty(value = "email") String email)
+    {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.id = id;
     }
 
     public String getUsername() {
