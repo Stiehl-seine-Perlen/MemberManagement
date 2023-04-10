@@ -3,7 +3,6 @@ package de.thi.rest;
 import de.thi.beans.UserRegistration;
 import de.thi.entities.User;
 import org.json.JSONObject;
-import org.kie.api.runtime.process.ProcessContext;
 
 
 import javax.inject.Inject;
@@ -18,7 +17,6 @@ import javax.ws.rs.core.Response;
 @Path("/user")
 public class UserRegistrationEndpoint {
 
-    @Inject ProcessContext processContext;
     @Inject
     UserRegistration userRegistration;
 
@@ -33,7 +31,6 @@ public class UserRegistrationEndpoint {
         JSONObject userJson = new JSONObject(user);
         userJson.remove("password");
         //write user into process context
-        processContext.setVariable("user", user);
         return Response.status(200).entity(userJson.toString()).build();
     }
 
