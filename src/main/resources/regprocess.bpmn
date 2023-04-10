@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="__J8tkLndEDuLCraU338gPg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_GWU34LniEDuLCraU338gPg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_validItem" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_userItem" structureRef="de.thi.entities.User"/>
   <bpmn2:itemDefinition id="__16120B66-ABFC-4872-B26D-C385B7829C82_ParamInputXItem" structureRef="de.thi.entities.User"/>
   <bpmn2:itemDefinition id="__16120B66-ABFC-4872-B26D-C385B7829C82_validOutputXItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="__2C493524-8194-4E22-AF01-D01078E20400_ParamInputXItem" structureRef="de.thi.entities.User"/>
-  <bpmn2:interface id="_16120B66-ABFC-4872-B26D-C385B7829C82_ServiceInterface" name="de.thi.beans.UserRegistration" implementationRef="de.thi.beans.UserRegistration">
+  <bpmn2:interface id="_16120B66-ABFC-4872-B26D-C385B7829C82_ServiceInterface" name="de.thi.beans.ValidateRegistration" implementationRef="de.thi.beans.ValidateRegistration">
     <bpmn2:operation id="_16120B66-ABFC-4872-B26D-C385B7829C82_ServiceOperation" name="validateUserInput" implementationRef="validateUserInput"/>
   </bpmn2:interface>
-  <bpmn2:interface id="_2C493524-8194-4E22-AF01-D01078E20400_ServiceInterface" name="de.thi.beans.UserRegistration" implementationRef="de.thi.beans.UserRegistration">
+  <bpmn2:interface id="_2C493524-8194-4E22-AF01-D01078E20400_ServiceInterface" name="de.thi.beans.ValidateRegistration" implementationRef="de.thi.beans.ValidateRegistration">
     <bpmn2:operation id="_2C493524-8194-4E22-AF01-D01078E20400_ServiceOperation" name="registerUser" implementationRef="registerUser"/>
   </bpmn2:interface>
-  <bpmn2:interface id="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA_ServiceInterface" name="de.thi.beans.UserRegistration" implementationRef="de.thi.beans.UserRegistration">
+  <bpmn2:interface id="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA_ServiceInterface" name="de.thi.beans.ValidateRegistration" implementationRef="de.thi.beans.ValidateRegistration">
     <bpmn2:operation id="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA_ServiceOperation" name="promptfornewInput" implementationRef="promptfornewInput"/>
   </bpmn2:interface>
-  <bpmn2:collaboration id="_5F55DBB0-041D-4117-83A5-87C9DFB96E75" name="Default Collaboration">
-    <bpmn2:participant id="_217321C2-A04D-408B-86BE-FC5B5FDB4F8D" name="Pool Participant" processRef="regprocess"/>
+  <bpmn2:collaboration id="_62C646D1-2E9A-49A0-9FF1-68EB911DD49B" name="Default Collaboration">
+    <bpmn2:participant id="_99E4B512-6CEE-4AEE-9B3B-E23AD42F67A8" name="Pool Participant" processRef="regprocess"/>
   </bpmn2:collaboration>
   <bpmn2:process id="regprocess" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="regprocess" isExecutable="true" processType="Public">
+    <bpmn2:property id="valid" itemSubjectRef="_validItem" name="valid"/>
+    <bpmn2:property id="user" itemSubjectRef="_userItem" name="user"/>
     <bpmn2:sequenceFlow id="_01D52438-ABAC-41C7-89D5-7B3D62B39E5B" sourceRef="_2C493524-8194-4E22-AF01-D01078E20400" targetRef="_D72C955F-6BDB-428B-8EF5-85330EF50BA8"/>
     <bpmn2:sequenceFlow id="_B27262DF-C846-47F4-B552-7394EEDB99C0" name="no" sourceRef="_CDA3FD72-6424-4E84-BA7D-61B34EF4B3A9" targetRef="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA">
       <bpmn2:extensionElements>
@@ -45,7 +49,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_01D52438-ABAC-41C7-89D5-7B3D62B39E5B</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:serviceTask id="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.UserRegistration" drools:serviceoperation="promptfornewInput" name="Prompt for new Input" implementation="Java" operationRef="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA_ServiceOperation">
+    <bpmn2:serviceTask id="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.ValidateRegistration" drools:serviceoperation="promptfornewInput" name="Prompt for new Input" implementation="Java" operationRef="_3AA29E4E-542D-4373-8645-3DC5B6B67EFA_ServiceOperation">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Prompt for new Input]]></drools:metaValue>
@@ -54,7 +58,7 @@
       <bpmn2:incoming>_B27262DF-C846-47F4-B552-7394EEDB99C0</bpmn2:incoming>
       <bpmn2:outgoing>_DA170503-2486-4B31-9264-8A00391DC5B4</bpmn2:outgoing>
     </bpmn2:serviceTask>
-    <bpmn2:serviceTask id="_2C493524-8194-4E22-AF01-D01078E20400" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.UserRegistration" drools:serviceoperation="registerUser" name="Register User" implementation="Java" operationRef="_2C493524-8194-4E22-AF01-D01078E20400_ServiceOperation">
+    <bpmn2:serviceTask id="_2C493524-8194-4E22-AF01-D01078E20400" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.ValidateRegistration" drools:serviceoperation="registerUser" name="Register User" implementation="Java" operationRef="_2C493524-8194-4E22-AF01-D01078E20400_ServiceOperation">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Register User]]></drools:metaValue>
@@ -86,7 +90,7 @@
       <bpmn2:outgoing>_56FE3D9B-6EBC-49A3-8AAB-C4A809F235CA</bpmn2:outgoing>
       <bpmn2:outgoing>_B27262DF-C846-47F4-B552-7394EEDB99C0</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
-    <bpmn2:serviceTask id="_16120B66-ABFC-4872-B26D-C385B7829C82" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.UserRegistration" drools:serviceoperation="validateUserInput" name="Check for valid input" implementation="Java" operationRef="_16120B66-ABFC-4872-B26D-C385B7829C82_ServiceOperation">
+    <bpmn2:serviceTask id="_16120B66-ABFC-4872-B26D-C385B7829C82" drools:serviceimplementation="Java" drools:serviceinterface="de.thi.beans.ValidateRegistration" drools:serviceoperation="validateUserInput" name="Check for valid input" implementation="Java" operationRef="_16120B66-ABFC-4872-B26D-C385B7829C82_ServiceOperation">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Check for valid input]]></drools:metaValue>
@@ -263,7 +267,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>__J8tkLndEDuLCraU338gPg</bpmn2:source>
-    <bpmn2:target>__J8tkLndEDuLCraU338gPg</bpmn2:target>
+    <bpmn2:source>_GWU34LniEDuLCraU338gPg</bpmn2:source>
+    <bpmn2:target>_GWU34LniEDuLCraU338gPg</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
