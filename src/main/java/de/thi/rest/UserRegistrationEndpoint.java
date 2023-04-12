@@ -28,6 +28,7 @@ public class UserRegistrationEndpoint {
     @Inject
     UserRegistration userRegistration;
 
+
     @POST
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -48,7 +49,7 @@ public class UserRegistrationEndpoint {
                         .put("username", user.getUsername())
                         .put("password", user.getPassword())
                         .put("email", user.getEmail()))
-                        .toString();
+                .toString();
 
         //Set Headers
         httpPost.setHeader("Accept", "application/json");
@@ -71,7 +72,7 @@ public class UserRegistrationEndpoint {
             // Create JSON for Response
             // send only neccecary information to frontend
             JSONObject obj = new JSONObject(responseBody);
-            String id = obj.getJSONObject("user").getInt("id")+"";
+            String id = obj.getJSONObject("user").getInt("id") + "";
             String username = obj.getJSONObject("user").getString("username");
             String email = obj.getJSONObject("user").getString("email");
 
@@ -81,13 +82,23 @@ public class UserRegistrationEndpoint {
                             .put("username", username)
                             .put("email", email))
                     .toString();
-            return Response.ok(responseJson).build();
+
+            // get 'valid' attribute of response
+            String valid = obj.get("valid")+"";
+            boolean validBool = Boolean.parseBoolean(valid);
+            if (validBool){
+                System.out.println("Registration valid");
+                 return Response.ok(responseJson).build();
+            }
+            else {
+                System.out.println("Registration not valid");
+                return Response.status(422).build();
+            }
 
         } finally {
             response1.close();
         }
     }
-
 
 
 }
