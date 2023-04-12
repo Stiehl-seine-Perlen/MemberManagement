@@ -21,7 +21,7 @@ public class ValidateRegistration {
         if (validateUsername(user)
                 && validatePassword(user)
                 && validateEmail(user)) {
-            return false;
+            return true;
         } else {
             return false;
         }
@@ -30,18 +30,18 @@ public class ValidateRegistration {
     //Get Process Context from Kogito Application and validate username
     //TODO: Refine username validation
     public boolean validateUsername(User user) {
-//
-//
-//        User searchedUser = userRegistration.find("username", user.getUsername()).firstResult();
-//
-//        //test if username is already in database
-//        if(searchedUser != null){
-//            //log Entry: Username already exists
-//            Log.info("Username >>"+ user.getUsername()+"<< already exists");
-//            return false;
-//        }
-//        //Username is not already in database -> Vald new username
-//        Log.info("Username >>"+ user.getUsername()+"<< not found -> valid new username");
+
+
+        User searchedUser = userRegistration.find("username", user.getUsername()).firstResult();
+
+        //test if username is already in database
+        if(searchedUser != null){
+            //log Entry: Username already exists
+            System.out.println("Username >>"+ user.getUsername()+"<< already exists");
+            return false;
+        }
+        //Username is not already in database -> Vald new username
+        System.out.println("Username >>"+ user.getUsername()+"<< not found -> valid new username");
         return true;
     }
 
