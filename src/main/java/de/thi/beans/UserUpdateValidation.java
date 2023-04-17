@@ -23,19 +23,10 @@ public class UserUpdateValidation{
             return false;
         }   
     }
-
-    public boolean validateUserUpdate() {
-        return false;
-    }
-
+    
     @Transactional
     public void doUserUpdate(User user) {
         userUpdate.persist(user);
-    }
-
-    @Transactional
-    public void doUserUpdate() {
-        System.out.println("Error: can't persist User with no User Object!");
     }
 
     // these functions will fanish, when the class "ValidteRegistration" can be imported
