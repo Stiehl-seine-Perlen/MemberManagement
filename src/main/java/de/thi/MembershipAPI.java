@@ -31,11 +31,11 @@ public class MembershipAPI  {
 
 
     @POST
-    @Path("/accept")
+    @Path("/request")
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addUser(User user) throws IOException {
+    public Response addUser(User user, Association association) throws IOException {
 
         // Call Kogito Process with POST Request
 
@@ -48,6 +48,8 @@ public class MembershipAPI  {
         String json = new JSONObject()
                 .put("user", new JSONObject()
                         .put("username", user.getUsername()))
+                .put("association", new JSONObject()
+                        .put("assName", association.getName()))
                 .toString();
 
         //Set Headers

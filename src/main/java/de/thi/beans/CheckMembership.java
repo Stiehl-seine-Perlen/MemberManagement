@@ -2,13 +2,17 @@ package de.thi.beans;
 
 import de.thi.entities.Association;
 import de.thi.entities.User;
+
+// This import is needed for "MemberList" - Java.util.List is not compatible
+import io.quarkus.hibernate.orm.PersistenceUnit.List;
+
 import io.smallrye.mutiny.Uni;
+import it.unimi.dsi.fastutil.objects.ObjectLists.EmptyList;
 
 import org.kie.kogito.internal.process.runtime.KogitoProcessContext;
 
 import com.thoughtworks.xstream.mapper.Mapper.Null;
 
-import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,17 +28,19 @@ public class CheckMembership {
     public boolean checkStatus(User user, Association association){
 
         // Deliver name to Kogito / BPMN
-        String name = user.getUsername();
+        String userName = user.getUsername();
 
-        String assName = association.getAssName();
+        String assName = association.getName();
 
-       // Uni<Association> searchedMember = membershipRepository.find("member", association.getMemberList()).firstResult();
-       boolean searchedMember = false;
+        // Check if user exist in memberlist
+        List searchedMember = membershipRepository.find("userName", association.getMemberList()).firstResult();
 
-        if(searchedMember == false){
-            return false;
-        }else{
+        if(searchedMember.value() != null){
+            System.out.println("User is already Member!");
             return true;
+        }else{
+            System.out.println("User is NOT Member!");
+            return false;
         }
     }
 

@@ -3,68 +3,101 @@ package de.thi.entities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
+
+import org.hibernate.mapping.List;
 
 @Entity
 @Table(name = "association_entity")
 public class Association {
-    // Association its name, List of Members and role and unique ID
 
+    // region Fields
     @Id
     @GeneratedValue
-    private long id;
+    private Long associationId;
 
-    @JsonProperty("assName")
-    @Column(name = "assName")
-    private String assName;
-   /* @JsonProperty("member")
-    @Column(name = "member")
-    private List<String> memberList; */
-    @Column(name = "role")
-    @JsonProperty("role")
-    private String role;
+    @JsonProperty("name")
+    @Column(name = "name")
+    private String name;
 
-    public Association() {
-    }
+    @JsonProperty("businessmail")
+    @Column(name = "businessmail")
+    private String businessmail;
+
+    @JsonProperty("password")
+    @Column(name = "password")
+    private String password;
+
+    @JsonProperty("created")
+    @Column(name = "created")
+    private LocalDateTime created;
+
+    @JsonProperty("memberList")
+    @Column(name = "memberList")
+    private List memberList;
+    // endregion
+
+    // region Constructors
+    public Association() {}
+
     @JsonCreator
-    public Association(@JsonProperty(value = "assName") String assName,
-             //   @JsonProperty(value = "member") List<String> memberList,
-                @JsonProperty(value = "role") String role)
-    {
-        this.assName = assName;
-       // this.memberList = memberList;
-        this.role = role;
+    public Association(@JsonProperty(value = "name", required = true) String name,
+                       @JsonProperty(value = "businessmail", required = true) String mail,
+                       @JsonProperty(value = "password", required = true) String password) {
+        this.name = name;
+        this.businessmail = mail;
+        this.password = password;
     }
 
-    // Getter and Setter
 
-    public long getId() {
-        return id;
+    public Long getAssociationId() {
+        return associationId;
     }
-    public void setId(long id) {
-        this.id = id;
+
+    public void setAssociationId(Long associationId) {
+        this.associationId = associationId;
     }
-    public String getAssName() {
-        return assName;
+
+    public String getName() {
+        return name;
     }
-    public void setAssName(String assName) {
-        this.assName = assName;
+
+    public void setName(String name) {
+        this.name = name;
     }
-  /*  public List<String> getMemberList() {
+
+    public String getBusinessmail() {
+        return businessmail;
+    }
+
+    public void setBusinessmail(String businessmail) {
+        this.businessmail = businessmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public List getMemberList() {
         return memberList;
     }
-    public void setMemberList(List<String> memberList) {
-        this.memberList = memberList;
-    }  */
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
-    }
 
-    
+    public void setMemberList(List memberList) {
+        this.memberList = memberList;
+    }
 
 }
