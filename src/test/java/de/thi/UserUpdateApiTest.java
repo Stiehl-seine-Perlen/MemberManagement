@@ -1,7 +1,7 @@
-// package com.bottleneck.performance.quarkus.demo.rest;
+// package de.thi;
 
-// import com.bottleneck.performance.quarkus.demo.beans.User;
-// import com.bottleneck.performance.quarkus.demo.entities.UserUpdate;
+// import de.thi.beans.User;
+// import de.thi.UserUpdate;
 // import io.quarkus.test.junit.QuarkusTest;
 // import io.restassured.http.ContentType;
 // import org.junit.jupiter.api.BeforeEach;

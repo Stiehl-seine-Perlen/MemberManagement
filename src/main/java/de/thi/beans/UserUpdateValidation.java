@@ -6,14 +6,14 @@ import de.thi.entities.User;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import org.kie.kogito.internal.process.runtime.KogitoProcessContext;
 
+@ApplicationScoped
 public class UserUpdateValidation{
     
     @Inject 
     UserUpdate userUpdate;
 
-    public boolean validateUserUpdate(User user, KogitoProcessContext context) {
+    public boolean validateUserUpdate(User user) {
         if (validateUsername(user) && 
             validatePassword(user) && 
             validateEmail(user)) {
@@ -24,9 +24,18 @@ public class UserUpdateValidation{
         }   
     }
 
+    public boolean validateUserUpdate() {
+        return false;
+    }
+
     @Transactional
-    public void updateUser(User user) {
+    public void doUserUpdate(User user) {
         userUpdate.persist(user);
+    }
+
+    @Transactional
+    public void doUserUpdate() {
+        System.out.println("Error: can't persist User with no User Object!");
     }
 
     // these functions will fanish, when the class "ValidteRegistration" can be imported

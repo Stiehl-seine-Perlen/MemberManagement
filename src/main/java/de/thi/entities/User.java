@@ -7,9 +7,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
+@Table(name = "user_entity")
 public class User {
 
     @Id
@@ -60,7 +60,7 @@ public class User {
     @CreationTimestamp
     private LocalDateTime when;
 
-    protected User() {}
+    public User() {}
 
     @JsonCreator
     public User(@JsonProperty(value = "username", required = true) String username,
