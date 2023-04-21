@@ -2,10 +2,10 @@ package de.thi.beans;
 
 import de.thi.entities.User;
 //import de.thi.beans.ValidateRegistration;
+import de.thi.entities.UserUpdate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class UserUpdateValidation{
@@ -14,29 +14,24 @@ public class UserUpdateValidation{
     UserUpdate userUpdate;
 
     public boolean validateUserUpdate(User user) {
-        if (validateUsername(user) && 
-            validatePassword(user) && 
-            validateEmail(user)) {
+        if (validateUsername(user.getUsername()) && 
+            validatePassword(user.getPassword()) && 
+            validateEmail(user.getEmail())) {
                 return true;
         }
         else {
             return false;
         }   
     }
-    
-    @Transactional
-    public void doUserUpdate(User user) {
-        userUpdate.persist(user);
-    }
 
     // these functions will fanish, when the class "ValidteRegistration" can be imported
-    public boolean validateUsername(User user) {
+    public boolean validateUsername(String username) {
         return true;
     }
-    public boolean validatePassword(User user) {
+    public boolean validatePassword(String password) {
         return true;
     }
-    public boolean validateEmail(User user) {
+    public boolean validateEmail(String email) {
         return true;
     }
 }

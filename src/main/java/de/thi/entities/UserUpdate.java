@@ -1,6 +1,5 @@
-package de.thi.beans;
+package de.thi.entities;
 
-import de.thi.entities.User;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;

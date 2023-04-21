@@ -1,32 +1,26 @@
 package de.thi.rest;
 
 import de.thi.entities.User;
-import de.thi.beans.UserUpdate;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.json.JSONObject;
+import javax.enterprise.context.ApplicationScoped;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import java.util.List;
 
-@Path("/user")
-public class UserUpdateAPI {
+@ApplicationScoped
+@RegisterRestClient(configKey = "user")
+public interface UserUpdateAPI {
 
-    @Inject
-    UserUpdate userUpdate;
+    @GET
+    List<User> all();
+
+    @GET
+    @Path("{id}")
+    User byId(@PathParam("id") Long id);
 
     @POST
-    @Path("/update")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateUser(User user) {
-        userUpdate.persist(user);
-        //return response with status 200 and the user object as json without the password field
-        JSONObject userJson = new JSONObject(user);
-        userJson.remove("password");
-        //write user into process context
-        return Response.status(200).entity(userJson.toString()).build();
-    }
+    void post(User user);
 }

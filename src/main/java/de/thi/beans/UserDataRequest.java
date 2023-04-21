@@ -1,6 +1,7 @@
 package de.thi.beans;
 
 import de.thi.entities.User;
+import de.thi.entities.UserUpdate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
