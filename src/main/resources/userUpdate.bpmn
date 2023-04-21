@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_Omr3IMKLEDuEO5GyRkc1Xw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_JktgIMKNEDuEO5GyRkc1Xw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_userItem" structureRef="de.thi.entities.User"/>
   <bpmn2:itemDefinition id="_validItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="__F4BB6992-8666-4672-84FE-7BA4FD371349_SkippableInputXItem" structureRef="Object"/>
@@ -15,6 +15,7 @@
   <bpmn2:itemDefinition id="__F4BB6992-8666-4672-84FE-7BA4FD371349_NotStartedNotifyInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__F4BB6992-8666-4672-84FE-7BA4FD371349_NotCompletedNotifyInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__F4BB6992-8666-4672-84FE-7BA4FD371349_userInputXItem" structureRef="de.thi.entities.User"/>
+  <bpmn2:itemDefinition id="__F4BB6992-8666-4672-84FE-7BA4FD371349_userOutputXItem" structureRef="de.thi.entities.User"/>
   <bpmn2:itemDefinition id="__A4B94469-A95D-4C54-A0C0-82120889BAF5_SkippableInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__A4B94469-A95D-4C54-A0C0-82120889BAF5_PriorityInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__A4B94469-A95D-4C54-A0C0-82120889BAF5_CommentInputXItem" structureRef="Object"/>
@@ -63,8 +64,8 @@
       <bpmn2:outMessageRef>_5988B9FC-7DA9-43D3-A77C-EA897E397963_OutMessage</bpmn2:outMessageRef>
     </bpmn2:operation>
   </bpmn2:interface>
-  <bpmn2:collaboration id="_76AA5839-5F85-4AF8-B0E4-5FC4A4C947B9" name="Default Collaboration">
-    <bpmn2:participant id="_02879340-1482-4C09-93C2-D7C4E686ABC0" name="Pool Participant" processRef="userUpdate"/>
+  <bpmn2:collaboration id="_2EA85C21-24FF-437E-9417-6382508E532A" name="Default Collaboration">
+    <bpmn2:participant id="_6D5B4A36-2D96-4A8E-ADD0-8B831C42AF0B" name="Pool Participant" processRef="userUpdate"/>
   </bpmn2:collaboration>
   <bpmn2:process id="userUpdate" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="userUpdate" isExecutable="true" processType="Public">
     <bpmn2:property id="user" itemSubjectRef="_userItem" name="user"/>
@@ -257,11 +258,15 @@
         <bpmn2:dataInput id="_F4BB6992-8666-4672-84FE-7BA4FD371349_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__F4BB6992-8666-4672-84FE-7BA4FD371349_TaskNameInputXItem" name="TaskName"/>
         <bpmn2:dataInput id="_F4BB6992-8666-4672-84FE-7BA4FD371349_userInputX" drools:dtype="de.thi.entities.User" itemSubjectRef="__F4BB6992-8666-4672-84FE-7BA4FD371349_userInputXItem" name="user"/>
         <bpmn2:dataInput id="_F4BB6992-8666-4672-84FE-7BA4FD371349_SkippableInputX" drools:dtype="Object" itemSubjectRef="__F4BB6992-8666-4672-84FE-7BA4FD371349_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:dataOutput id="_F4BB6992-8666-4672-84FE-7BA4FD371349_userOutputX" drools:dtype="de.thi.entities.User" itemSubjectRef="__F4BB6992-8666-4672-84FE-7BA4FD371349_userOutputXItem" name="user"/>
         <bpmn2:inputSet>
           <bpmn2:dataInputRefs>_F4BB6992-8666-4672-84FE-7BA4FD371349_TaskNameInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_F4BB6992-8666-4672-84FE-7BA4FD371349_userInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_F4BB6992-8666-4672-84FE-7BA4FD371349_SkippableInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
+        <bpmn2:outputSet>
+          <bpmn2:dataOutputRefs>_F4BB6992-8666-4672-84FE-7BA4FD371349_userOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
       </bpmn2:ioSpecification>
       <bpmn2:dataInputAssociation>
         <bpmn2:targetRef>_F4BB6992-8666-4672-84FE-7BA4FD371349_TaskNameInputX</bpmn2:targetRef>
@@ -281,6 +286,10 @@
           <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_F4BB6992-8666-4672-84FE-7BA4FD371349_SkippableInputX]]></bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation>
+        <bpmn2:sourceRef>_F4BB6992-8666-4672-84FE-7BA4FD371349_userOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>user</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
     </bpmn2:userTask>
     <bpmn2:startEvent id="_46256EC9-E360-4BD8-9534-F5D0989CB5F1" name="User starts Profile Update">
       <bpmn2:extensionElements>
@@ -485,7 +494,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_Omr3IMKLEDuEO5GyRkc1Xw</bpmn2:source>
-    <bpmn2:target>_Omr3IMKLEDuEO5GyRkc1Xw</bpmn2:target>
+    <bpmn2:source>_JktgIMKNEDuEO5GyRkc1Xw</bpmn2:source>
+    <bpmn2:target>_JktgIMKNEDuEO5GyRkc1Xw</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
