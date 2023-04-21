@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
 import javax.persistence.*;
 
-import org.hibernate.mapping.List;
+//import org.hibernate.mapping.List;
 
 @Entity
 @Table(name = "association_entity")
@@ -36,7 +36,7 @@ public class Association {
 
     @JsonProperty("memberList")
     @Column(name = "memberList")
-    private List memberList;
+    private ArrayList<String> memberList;
     // endregion
 
     // region Constructors
@@ -45,10 +45,12 @@ public class Association {
     @JsonCreator
     public Association(@JsonProperty(value = "name", required = true) String name,
                        @JsonProperty(value = "businessmail", required = true) String mail,
-                       @JsonProperty(value = "password", required = true) String password) {
+                       @JsonProperty(value = "password", required = true) String password,
+                       @JsonProperty(value = "memberList", required = true) ArrayList<String> memberList) {
         this.name = name;
         this.businessmail = mail;
         this.password = password;
+        this.memberList = memberList;
     }
 
 
@@ -92,11 +94,11 @@ public class Association {
         this.created = created;
     }
 
-    public List getMemberList() {
+    public ArrayList<String> getMemberList() {
         return memberList;
     }
 
-    public void setMemberList(List memberList) {
+    public void setMemberList(ArrayList<String> memberList) {
         this.memberList = memberList;
     }
 
