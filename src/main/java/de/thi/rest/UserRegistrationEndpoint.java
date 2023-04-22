@@ -1,15 +1,22 @@
 package de.thi.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.thi.beans.UserRegistration;
 import de.thi.entities.User;
 import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.kafka.common.protocol.types.Field;
 import org.json.JSONObject;
+
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -20,7 +27,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-
+import java.net.http.HttpClient;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("/user")
 public class UserRegistrationEndpoint {
@@ -64,25 +73,8 @@ public class UserRegistrationEndpoint {
             System.out.println(response1.getStatusLine()); //Check HTTP Code for Response
             HttpEntity entity1 = response1.getEntity(); //TODO: Do something useful with the response
 
-            //print response body to console
-            String responseBody = EntityUtils.toString(entity1);
-            System.out.println(responseBody);
-
-            // Create JSON for Response
-            // send only neccecary information to frontend
-            JSONObject obj = new JSONObject(responseBody);
-            String id = obj.getJSONObject("user").getInt("id")+"";
-            String username = obj.getJSONObject("user").getString("username");
-            String email = obj.getJSONObject("user").getString("email");
-
-            String responseJson = new JSONObject()
-                    .put("user", new JSONObject()
-                            .put("id", id)
-                            .put("username", username)
-                            .put("email", email))
-                    .toString();
-            return Response.ok(responseJson).build();
-
+            System.out.println(entity1.getContent().toString());
+            return Response.status(response1.getStatusLine().getStatusCode()).build();
         } finally {
             response1.close();
         }
