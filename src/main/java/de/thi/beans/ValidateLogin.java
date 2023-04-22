@@ -1,10 +1,15 @@
 package de.thi.beans;
 
 import de.thi.entities.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+@ApplicationScoped
 public class ValidateLogin {
+    private static final Logger LOG = LoggerFactory.getLogger(ValidateLogin.class);
 
     @Inject
     UserRegistration userRegistration;
@@ -19,5 +24,11 @@ public class ValidateLogin {
             }
         }
         return false;
+    }
+
+    public void login(){
+
+        LOG.info("Login successful!");
+
     }
 }

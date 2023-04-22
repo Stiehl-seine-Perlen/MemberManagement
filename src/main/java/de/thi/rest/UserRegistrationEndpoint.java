@@ -9,8 +9,10 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.json.JSONObject;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -22,6 +24,7 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 
 
+@ApplicationScoped
 @Path("/user")
 public class UserRegistrationEndpoint {
 
@@ -29,6 +32,7 @@ public class UserRegistrationEndpoint {
     UserRegistration userRegistration;
 
     @Inject
+    @RestClient
     UserManagementRestClient userManagementRestClient;
 
 
