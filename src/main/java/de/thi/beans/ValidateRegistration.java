@@ -6,7 +6,6 @@ import org.kie.kogito.internal.process.runtime.KogitoProcessContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Response;
 
 @ApplicationScoped
 // Get process context of kogito application
@@ -15,21 +14,22 @@ public class ValidateRegistration {
     @Inject
     UserRegistration userRegistration;
 
-    public boolean validateUserInput(User user) {
-        if (validateUsername(user)
-                && validatePassword(user)
-                && validateEmail(user)) {
-            return true;
+    public void validateUserInput(KogitoProcessContext processContext) {
+        if (validateUsername(processContext)
+                && validatePassword(processContext)
+                && validateEmail(processContext)) {
+            processContext.setVariable("validUser", true);
         }
         else {
-            return false;
+            processContext.setVariable("validUser", false);
         }
     }
 
     //Get Process Context from Kogito Application and validate username
     //TODO: Refine username validation
-    public boolean validateUsername(User user) {
-
+    public boolean validateUsername(KogitoProcessContext processContext) {
+        User user = (User) processContext.getVariable("user"); //TODO: cast necessary?
+        //search for user in database
 
         User searchedUser = userRegistration.find("username", user.getUsername()).firstResult();
 
@@ -43,8 +43,9 @@ public class ValidateRegistration {
         Log.info("Username >>"+ user.getUsername()+"<< not found -> valid new username");
         return true;
     }
-    public boolean validatePassword(User user){
+    public boolean validatePassword(KogitoProcessContext processContext){
 
+        User user = (User) processContext.getVariable("User");
         String password = user.getPassword();
         if(password != null && password.length() >= 8){
             return true;
@@ -53,8 +54,9 @@ public class ValidateRegistration {
             return false;
         }
     }
-    private boolean validateEmail(User user) {
+    private boolean validateEmail(KogitoProcessContext processContext) {
 
+        User user = (User) processContext.getVariable("User");
         String email = user.getEmail();
         User searchedUser = userRegistration.find("email", user.getEmail()).firstResult();
 
@@ -69,13 +71,5 @@ public class ValidateRegistration {
         else {
             return false;
         }
-    }
-
-    private Response promptfornewInput(){
-        return Response.status(422).build();
-    }
-
-    private void registerUser(User user){
-        userRegistration.persist(user);
     }
 }
