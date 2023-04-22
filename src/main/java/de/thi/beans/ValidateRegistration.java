@@ -46,9 +46,14 @@ public class ValidateRegistration {
     }
 
     public boolean validatePassword(User user) {
-
-        String password = user.getPassword();
-        return password != null && password.length() >= 8;
+        return true;
+//        String password = user.getPassword();
+//        if(password != null && password.length() >= 8){
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
     }
 
     private boolean validateEmail(User user) {
