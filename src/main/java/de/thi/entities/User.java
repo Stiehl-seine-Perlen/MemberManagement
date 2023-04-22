@@ -24,7 +24,7 @@ public class User {
     @JsonProperty("email")
     private String email;
 
-    public User() {
+    protected User() {
     }
     @JsonCreator
     public User(@JsonProperty(value = "username") String username,

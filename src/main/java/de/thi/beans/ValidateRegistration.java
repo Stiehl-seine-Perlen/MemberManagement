@@ -1,7 +1,6 @@
 package de.thi.beans;
 
 import de.thi.entities.User;
-import org.json.JSONObject;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,17 +13,7 @@ public class ValidateRegistration {
     @Inject
     UserRegistration userRegistration;
 
-
     public boolean validateUserInput(User user) {
-
-//        JSONObject obj = new JSONObject(json);
-//
-//        User user = new User();
-//        user.setUsername(obj.getJSONObject("User").getString("username"));
-//        user.setPassword(obj.getJSONObject("User").getString("password"));
-//        user.setEmail(obj.getJSONObject("User").getString("email"));
-
-
         if (validateUsername(user)
                 && validatePassword(user)
                 && validateEmail(user)) {
@@ -88,7 +77,5 @@ public class ValidateRegistration {
     @Transactional
     public void registerUser(User user){
         userRegistration.persist(user);
-        // print out user
-        System.out.println("User: " + user.getId() + " registered!");
     }
 }
