@@ -28,6 +28,9 @@ public class UserRegistrationEndpoint {
     @Inject
     UserRegistration userRegistration;
 
+    @Inject
+    UserManagementRestClient userManagementRestClient;
+
 
     @POST
     @Path("/register")
@@ -100,5 +103,13 @@ public class UserRegistrationEndpoint {
         }
     }
 
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    public void loginUser(String username, String password){
+        userManagementRestClient.post(username, password);
+    }
 
 }
