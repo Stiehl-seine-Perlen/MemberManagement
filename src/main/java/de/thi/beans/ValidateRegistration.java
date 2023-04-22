@@ -1,7 +1,7 @@
 package de.thi.beans;
 
 import de.thi.entities.User;
-import org.kie.kogito.internal.process.runtime.KogitoProcessContext;
+import org.json.JSONObject;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,12 +17,20 @@ public class ValidateRegistration {
 
     public boolean validateUserInput(User user) {
 
+//        JSONObject obj = new JSONObject(json);
+//
+//        User user = new User();
+//        user.setUsername(obj.getJSONObject("User").getString("username"));
+//        user.setPassword(obj.getJSONObject("User").getString("password"));
+//        user.setEmail(obj.getJSONObject("User").getString("email"));
+
 
         if (validateUsername(user)
                 && validatePassword(user)
                 && validateEmail(user)) {
-            return false;
-        } else {
+            return true;
+        }
+        else {
             return false;
         }
     }
@@ -44,8 +52,7 @@ public class ValidateRegistration {
 //        Log.info("Username >>"+ user.getUsername()+"<< not found -> valid new username");
         return true;
     }
-
-    public boolean validatePassword(User user) {
+    public boolean validatePassword(User user){
         return true;
 //        String password = user.getPassword();
 //        if(password != null && password.length() >= 8){
@@ -55,7 +62,6 @@ public class ValidateRegistration {
 //            return false;
 //        }
     }
-
     private boolean validateEmail(User user) {
 
 //        String email = user.getEmail();
@@ -75,11 +81,14 @@ public class ValidateRegistration {
         return true;
     }
 
+    public void promptfornewInput(){
+        System.out.println("Prombt for new input");
+    }
+
     @Transactional
-    public void registerUser(User user) {
+    public void registerUser(User user){
         userRegistration.persist(user);
         // print out user
         System.out.println("User: " + user.getId() + " registered!");
     }
-
 }
