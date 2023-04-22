@@ -1,21 +1,16 @@
 package de.thi.entities;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.CreationTimestamp;
+//import org.hibernate.annotations.CreationTimestamp;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
-@Table(name = "user_entity")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+@Table(name = "User_entity")
+public class User extends PanacheEntity{
 
     private String username;
     private String email;
