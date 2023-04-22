@@ -11,8 +11,8 @@ import javax.ws.rs.Path;
 @RegisterRestClient(configKey = "user")
 public interface UserManagementRestClient {
 
+
     @POST
-    @Path("/login")
     void post(String username, String password);
 
 
