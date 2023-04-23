@@ -39,7 +39,6 @@ public class CheckMembership {
         /* */
         
         ArrayList<String> memberListFake = new ArrayList<String>();
-
         memberListFake.add("Volvo");
         memberListFake.add("MrFake");
         memberListFake.add("Ford");
