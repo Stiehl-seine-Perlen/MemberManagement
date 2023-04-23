@@ -1,8 +1,5 @@
 package de.thi.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -15,38 +12,31 @@ public class Association {
 
     // region Fields
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long associationId;
 
-    @JsonProperty("name")
-    @Column(name = "name")
+    
     private String name;
 
-    @JsonProperty("businessmail")
-    @Column(name = "businessmail")
+   
     private String businessmail;
 
-    @JsonProperty("password")
-    @Column(name = "password")
+  
     private String password;
 
-    @JsonProperty("created")
-    @Column(name = "created")
+   
     private LocalDateTime created;
 
-    @JsonProperty("memberList")
-    @Column(name = "memberList")
+    
     private ArrayList<String> memberList;
     // endregion
 
     // region Constructors
     public Association() {}
 
-    @JsonCreator
-    public Association(@JsonProperty(value = "name", required = true) String name,
-                       @JsonProperty(value = "businessmail", required = true) String mail,
-                       @JsonProperty(value = "password", required = true) String password,
-                       @JsonProperty(value = "memberList", required = true) ArrayList<String> memberList) {
+    
+    public Association(String name, String mail, String password, ArrayList<String> memberList)
+    {
         this.name = name;
         this.businessmail = mail;
         this.password = password;
