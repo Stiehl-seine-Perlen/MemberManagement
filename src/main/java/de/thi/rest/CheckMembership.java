@@ -3,9 +3,10 @@ package de.thi.rest;
 import java.util.ArrayList;
 
 import javax.enterprise.context.ApplicationScoped;
+
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
 
@@ -24,9 +25,9 @@ public class CheckMembership {
     @Inject
     UserRegistration userRegistration;
 
-    @POST // POST Endpunkt
+    @POST // POST Endpunkt 
+    @Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
 	public boolean checkStatus(User user, Association association)
 	{
 

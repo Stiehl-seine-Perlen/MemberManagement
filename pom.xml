@@ -13,7 +13,7 @@
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>2.16.5.Final</quarkus.platform.version>
-        <version.infinispan>14.0.8.Final</version.infinispan>
+        
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
     </properties>
@@ -98,13 +98,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
-        </dependency>
-
-        <!-- Infinispan -->
-              
-        <dependency>
-            <groupId>org.kie.kogito</groupId>
-            <artifactId>kogito-addons-quarkus-data-index-infinispan</artifactId>
         </dependency>
 
         <!-- JDBC driver dependencies -->

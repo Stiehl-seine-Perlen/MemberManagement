@@ -1,6 +1,5 @@
 package de.thi.entities;
 
-import javax.persistence.Entity;
 
 public class UserAsscociationDTO {
     private User user;
