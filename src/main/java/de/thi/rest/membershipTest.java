@@ -15,12 +15,12 @@ import org.kie.kogito.Model;
 import org.kie.kogito.process.Process;
 import org.kie.kogito.process.ProcessInstance;
 
-import de.thi.entities.UserAsscociationDTO;
+import de.thi.entities.UserAssociationDTO;
 
 // New Endpoint - Test if the other endpoint isn't working because of 2 Object Parameters in 
 // endpoint -> CheckMembership.java -> method -> checkstatus(User user, Associatio)
 
-@Path("user/join/association")
+@Path("user/join/associationTest")
 public class membershipTest {
     @Inject
     @Named("MembershipRequest")
@@ -29,7 +29,7 @@ public class membershipTest {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void joinAssociation(UserAsscociationDTO userAsscociationDTO){
+    public void joinAssociation(UserAssociationDTO userAsscociationDTO){
         
 
         Map<String, Object> parameters = new HashMap<>();
