@@ -4,7 +4,7 @@ package de.thi.entities;
 public class UserAssociationDTO {
     private User user;
     private Association association;
-  /*   private Boolean memberStatus ;
+    /*private Boolean memberStatus ;
     private Boolean reviewStatus ;
     private String text4Finance ;*/
    
@@ -32,7 +32,8 @@ public class UserAssociationDTO {
     public void setAssociation(Association association) {
         this.association = association;
     }
-/* 
+    
+    /* 
     public String getText4Finance() {
         return text4Finance;
     }

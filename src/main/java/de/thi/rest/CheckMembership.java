@@ -5,12 +5,10 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.kie.kogito.internal.process.runtime.KogitoProcessContext;
-import org.kie.kogito.internal.process.runtime.KogitoProcessInstance;
 
 import de.thi.entities.UserAssociationDTO;
 import de.thi.jpa.MembershipRepository;
@@ -48,13 +46,11 @@ public class CheckMembership {
         //Rückgabe des Ergebnisses der Überprüfung
         if(found == true){
             System.out.println(userAsscociationDTO.getUser().getUsername()+ " is already Member in " + userAsscociationDTO.getAssociation().getName() + "!");
-           // userAsscociationDTO.setMemberStatus(true);
-            System.out.println("KOGITI: " + KogitoProcessContext.class.toString());
-            
+            // userAsscociationDTO.setMemberStatus(true);         
             return userAsscociationDTO;
         }else{
             System.out.println(userAsscociationDTO.getUser().getUsername() + " is NOT Member of " + userAsscociationDTO.getAssociation().getName() + "!");
-        // userAsscociationDTO.setMemberStatus(false);
+            // userAsscociationDTO.setMemberStatus(false);
             return userAsscociationDTO;
         
 	    }
