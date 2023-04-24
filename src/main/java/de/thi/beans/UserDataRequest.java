@@ -18,7 +18,8 @@ public class UserDataRequest implements PanacheRepository<User>{
     UserUpdateRepository userUpdateRepository;
 
     public User getUserData(Long id) {
-        return userUpdateRepository.findById(id);
+        User user = userUpdateRepository.findById(id);
+        return user;
     }
     
     public List<User> getAllUser() {
