@@ -1,7 +1,7 @@
 package de.thi.beans;
 
 import de.thi.entities.User;
-import de.thi.entities.UserUpdate;
+import de.thi.entities.UserUpdateRepository;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 public class UserDataRequest implements PanacheRepository<User>{
     
     @Inject 
-    UserUpdate userUpdate;
+    UserUpdateRepository userUpdateRepository;
 
     public User getUserData(Long id) {
-        return findById(id);
+        return userUpdateRepository.findById(id);
     }
     
     public List<User> getAllUser() {

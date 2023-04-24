@@ -16,11 +16,11 @@ public class RestArchiver {
 
     @Inject
     @RestClient
-    UserUpdateAPI userUpdateAPI;
+    UserUpdateRestClient userUpdateRestClient;
 
     public void archive(User user) {
 
-        userUpdateAPI.post(user);
+        userUpdateRestClient.post(user);
         LOG.info("User '{}' successfully updated", user.getUsername());
     }
 }

@@ -2,7 +2,7 @@ package de.thi.beans;
 
 import de.thi.entities.User;
 //import de.thi.beans.ValidateRegistration;
-import de.thi.entities.UserUpdate;
+import de.thi.entities.UserUpdateRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -11,7 +11,7 @@ import javax.inject.Inject;
 public class UserUpdateValidation{
     
     @Inject 
-    UserUpdate userUpdate;
+    UserUpdateRepository userUpdateRepository;
 
     public boolean validateUserUpdate(User user) {
         if (validateUsername(user.getUsername()) && 

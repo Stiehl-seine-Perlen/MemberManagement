@@ -12,7 +12,7 @@ import java.util.List;
 
 @ApplicationScoped
 @RegisterRestClient(configKey = "user")
-public interface UserUpdateAPI {
+public interface UserUpdateRestClient {
 
     @GET
     List<User> all();
