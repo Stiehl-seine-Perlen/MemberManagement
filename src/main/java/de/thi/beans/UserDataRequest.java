@@ -24,8 +24,4 @@ public class UserDataRequest implements PanacheRepository<User>{
     public List<User> getAllUser() {
         return find("ORDER BY username").list();
     }
-    
-    public User getUserData(User user) {
-        return user;
-    }
 }
