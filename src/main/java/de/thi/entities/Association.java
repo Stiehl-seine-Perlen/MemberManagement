@@ -13,7 +13,7 @@ public class Association {
     // region Fields
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long associationId;
+    private long associationId;
 
     
     private String name;
