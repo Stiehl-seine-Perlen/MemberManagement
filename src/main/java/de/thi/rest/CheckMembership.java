@@ -11,19 +11,15 @@ import javax.ws.rs.core.MediaType;
 
 
 import de.thi.entities.UserAssociationDTO;
-import de.thi.jpa.MembershipRepository;
-import de.thi.jpa.UserRegistration;
+import de.thi.jpa.ApplicationRepository;
+
 
 @ApplicationScoped
 // Get process context of kogito application
 public class CheckMembership {
 
     @Inject
-    MembershipRepository membershipRepository;
-
-    @Inject
-    UserRegistration userRegistration;
-
+    ApplicationRepository membershipRepository;
 
     @POST // POST Endpunkt 
     @Produces(MediaType.APPLICATION_JSON)

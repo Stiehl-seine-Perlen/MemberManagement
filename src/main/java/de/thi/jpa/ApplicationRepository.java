@@ -9,6 +9,6 @@ import javax.enterprise.context.ApplicationScoped;
 //Turn Bean ino a CDI Bean
 
 @ApplicationScoped
-public class MembershipRepository implements PanacheRepository<Association> {
+public class ApplicationRepository implements PanacheRepository<Association> {
  // auto implemented
 }
