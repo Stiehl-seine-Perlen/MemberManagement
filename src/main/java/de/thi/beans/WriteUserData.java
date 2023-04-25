@@ -6,6 +6,7 @@ import de.thi.rest.UserUpdateRestClient;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -19,6 +20,7 @@ public class WriteUserData {
     @RestClient
     UserUpdateRestClient userUpdateRestClient;
 
+    @Transactional
     @PostConstruct
     public void initialiseDB() {
     User kermit = new User("kermit", "kermit@demo.de", "12345678");

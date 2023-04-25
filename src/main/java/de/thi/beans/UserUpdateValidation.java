@@ -24,7 +24,7 @@ public class UserUpdateValidation{
         }   
     }
 
-    // these functions will fanish, when the class "ValidteRegistration" can be imported
+    // these functions will vanish, when the class "ValidteRegistration" can be imported
     public boolean validateUsername(String username) {
         return true;
     }
