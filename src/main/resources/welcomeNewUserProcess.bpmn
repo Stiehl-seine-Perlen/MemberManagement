@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_FYgI0MaHEDuSPdcZZHc6Xg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_validItem" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_userItem" structureRef="de.thi.entities.User"/>
+  <bpmn2:itemDefinition id="_D484909B-7297-46C1-B9C3-D8C2B71133F0" structureRef=""/>
+  <bpmn2:itemDefinition id="_31C946C2-3833-4A5A-B832-AD9ED36E2744" structureRef=""/>
+  <bpmn2:collaboration id="_262BBF27-FBB9-47AA-9D14-F7E2289DEFB6" name="Default Collaboration">
+    <bpmn2:participant id="_69ECF4A2-944B-4C66-BA0B-9C8CF4EDCC45" name="Pool Participant" processRef="regprocess"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="regprocess" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="regprocess" isExecutable="true" processType="Public">
+    <bpmn2:property id="valid" itemSubjectRef="_validItem" name="valid"/>
+    <bpmn2:property id="user" itemSubjectRef="_userItem" name="user"/>
+    <bpmn2:sequenceFlow id="_5CC4A914-0DBE-467E-B4CE-FCC8E46D8A00" sourceRef="_07E0E0E0-BDCD-4059-8F34-7511D5B8A826" targetRef="_F799EA62-9B05-442F-9CF2-FA1E225DDE78"/>
+    <bpmn2:sequenceFlow id="_DAF61AE4-7D61-4EC5-A1BF-6F03F5AC5BB6" sourceRef="_2D8C11C6-A973-4E5A-B447-B8F3EB21DE78" targetRef="_07E0E0E0-BDCD-4059-8F34-7511D5B8A826"/>
+    <bpmn2:endEvent id="_F799EA62-9B05-442F-9CF2-FA1E225DDE78" name="New User Process finished">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[New User Process finished]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_5CC4A914-0DBE-467E-B4CE-FCC8E46D8A00</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:callActivity id="_07E0E0E0-BDCD-4059-8F34-7511D5B8A826" drools:independent="false" drools:waitForCompletion="true" name="Welcome new User" calledElement="">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Welcome new User]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_DAF61AE4-7D61-4EC5-A1BF-6F03F5AC5BB6</bpmn2:incoming>
+      <bpmn2:outgoing>_5CC4A914-0DBE-467E-B4CE-FCC8E46D8A00</bpmn2:outgoing>
+    </bpmn2:callActivity>
+    <bpmn2:startEvent id="_2D8C11C6-A973-4E5A-B447-B8F3EB21DE78" name="User Registration Event Received">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[User Registration Event Received]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_DAF61AE4-7D61-4EC5-A1BF-6F03F5AC5BB6</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition/>
+    </bpmn2:startEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="regprocess">
+      <bpmndi:BPMNShape id="shape__2D8C11C6-A973-4E5A-B447-B8F3EB21DE78" bpmnElement="_2D8C11C6-A973-4E5A-B447-B8F3EB21DE78">
+        <dc:Bounds height="56" width="56" x="406" y="253"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__07E0E0E0-BDCD-4059-8F34-7511D5B8A826" bpmnElement="_07E0E0E0-BDCD-4059-8F34-7511D5B8A826">
+        <dc:Bounds height="102" width="154" x="596" y="230"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__F799EA62-9B05-442F-9CF2-FA1E225DDE78" bpmnElement="_F799EA62-9B05-442F-9CF2-FA1E225DDE78">
+        <dc:Bounds height="56" width="56" x="830" y="253"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__2D8C11C6-A973-4E5A-B447-B8F3EB21DE78_to_shape__07E0E0E0-BDCD-4059-8F34-7511D5B8A826" bpmnElement="_DAF61AE4-7D61-4EC5-A1BF-6F03F5AC5BB6">
+        <di:waypoint x="434" y="281"/>
+        <di:waypoint x="673" y="281"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__07E0E0E0-BDCD-4059-8F34-7511D5B8A826_to_shape__F799EA62-9B05-442F-9CF2-FA1E225DDE78" bpmnElement="_5CC4A914-0DBE-467E-B4CE-FCC8E46D8A00">
+        <di:waypoint x="673" y="281"/>
+        <di:waypoint x="858" y="281"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_07E0E0E0-BDCD-4059-8F34-7511D5B8A826">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_FYgI0MaHEDuSPdcZZHc6Xg</bpmn2:source>
+    <bpmn2:target>_FYgI0MaHEDuSPdcZZHc6Xg</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
