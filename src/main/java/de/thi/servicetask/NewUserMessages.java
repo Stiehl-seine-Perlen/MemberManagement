@@ -18,7 +18,7 @@ public class NewUserMessages {
 
     public void sendRecommendationEmail(String userID) {
         System.out.println("Recommendation Email sent to .... " + userID);
-        sendEmail(userID);
+        sendEmail(userID);                                                  //TODO: Change to recommendation email
 
     }
 
@@ -28,12 +28,15 @@ public class NewUserMessages {
 
 
     public void sendEmail(String userID) {
-        mailer.send(
-                Mail.withText("no-reply@benevolo.de",
-                    "Ahoy from Quarkus",
-                    "Hello to User: "+ userID
-                )
-        );
+
+        Mail mail = new Mail();
+        mail.addTo("info@example.org"); //TODO: Change to user email
+        mail.setFrom("no-reply@benevolo.de");
+        mail.setSubject("Welcome to Benevolo!");
+        mail.setText("Hello to User: "+ userID); //TODO: Change to html template
+        //mail.setHtml()
+
+        mailer.send(mail);
     }
 
 
