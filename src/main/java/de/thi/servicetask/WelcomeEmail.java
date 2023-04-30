@@ -2,10 +2,11 @@ package de.thi.servicetask;
 
 import javax.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class WelcomeEmail {
 
-    @ApplicationScoped
-    public void sendWelcomeEmail() { //TODO: add Username
+    public void sendWelcomeEmail(String userID) { //TODO: add Username
         System.out.println("Welcome Email sent to ....");
+
     }
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_9pC-QMaQEDuWm6AUm7an-w" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_Dg88ccloEDuND7gBnuJhwQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_InMessageType" structureRef=""/>
   <bpmn2:itemDefinition id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_OutMessageType" structureRef=""/>
+  <bpmn2:itemDefinition id="__E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputXItem" structureRef="String"/>
   <bpmn2:message id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_InMessage" itemRef="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_InMessageType"/>
   <bpmn2:message id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_OutMessage" itemRef="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_OutMessageType"/>
   <bpmn2:interface id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_ServiceInterface" name="de.thi.servicetask.WelcomeEmail" implementationRef="de.thi.servicetask.WelcomeEmail">
@@ -10,16 +11,19 @@
       <bpmn2:outMessageRef>_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_OutMessage</bpmn2:outMessageRef>
     </bpmn2:operation>
   </bpmn2:interface>
-  <bpmn2:collaboration id="_65C0EA15-F70B-499F-9005-0556EB3C0ABC" name="Default Collaboration">
-    <bpmn2:participant id="_AB2AC261-8B8B-49F5-8A62-BEDC06690733" name="Pool Participant" processRef="NewUserMessageProcess"/>
+  <bpmn2:collaboration id="_CA4A5271-E4F9-4958-A46D-6DF451533960" name="Default Collaboration">
+    <bpmn2:participant id="_45B41A26-E02E-4481-AC13-7046634703B9" name="Pool Participant" processRef="NewUserMessageProcess"/>
   </bpmn2:collaboration>
-  <bpmn2:process id="NewUserMessageProcess" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="NewUserMessageProcess" isExecutable="true" processType="Public">
+  <bpmn2:process id="NewUserMessageProcess" drools:packageName="de.thi" drools:version="1.0" drools:adHoc="false" name="NewUserMessageProcess" isExecutable="true" processType="Public">
+    <bpmn2:extensionElements>
+      <drools:import name="Integer"/>
+    </bpmn2:extensionElements>
     <bpmn2:sequenceFlow id="_7CB2A542-F43C-4F63-9475-B13C6182914F" sourceRef="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC" targetRef="_275051DD-F051-478C-85D7-50E7B7868342"/>
     <bpmn2:sequenceFlow id="_6B1FD937-57B4-49FA-927D-67F94B41D1B1" sourceRef="_B65EBE59-60C4-4DE6-8E7A-A39BA8D65A05" targetRef="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC"/>
-    <bpmn2:endEvent id="_275051DD-F051-478C-85D7-50E7B7868342" name="Welcome Email sended">
+    <bpmn2:endEvent id="_275051DD-F051-478C-85D7-50E7B7868342" name="Welcome Email send">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Welcome Email sended]]></drools:metaValue>
+          <drools:metaValue><![CDATA[Welcome Email send]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_7CB2A542-F43C-4F63-9475-B13C6182914F</bpmn2:incoming>
@@ -32,6 +36,19 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_6B1FD937-57B4-49FA-927D-67F94B41D1B1</bpmn2:incoming>
       <bpmn2:outgoing>_7CB2A542-F43C-4F63-9475-B13C6182914F</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputX" drools:dtype="String" itemSubjectRef="__E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputXItem" name="userID"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[userID]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_userIDInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
     </bpmn2:serviceTask>
     <bpmn2:startEvent id="_B65EBE59-60C4-4DE6-8E7A-A39BA8D65A05">
       <bpmn2:outgoing>_6B1FD937-57B4-49FA-927D-67F94B41D1B1</bpmn2:outgoing>
@@ -93,7 +110,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_9pC-QMaQEDuWm6AUm7an-w</bpmn2:source>
-    <bpmn2:target>_9pC-QMaQEDuWm6AUm7an-w</bpmn2:target>
+    <bpmn2:source>_Dg88ccloEDuND7gBnuJhwQ</bpmn2:source>
+    <bpmn2:target>_Dg88ccloEDuND7gBnuJhwQ</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
