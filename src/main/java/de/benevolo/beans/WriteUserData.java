@@ -1,10 +1,11 @@
-package de.thi.beans;
-
-import de.thi.entities.User;
-import de.thi.entities.UserUpdateRepository;
-import de.thi.rest.UserUpdateRestClient;
+package de.benevolo.beans;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+
+import de.benevolo.entities.User;
+import de.benevolo.entities.UserUpdateRepository;
+import de.benevolo.rest.UserUpdateRestClient;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.annotation.PostConstruct;

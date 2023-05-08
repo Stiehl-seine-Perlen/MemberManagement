@@ -1,4 +1,4 @@
-package de.thi.entities;
+package de.benevolo.entities;
 
 //import java.time.LocalDateTime;
 

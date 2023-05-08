@@ -1,7 +1,4 @@
-package de.thi;
-
-import de.thi.entities.User;
-import de.thi.entities.UserUpdateRepository;
+package de.benevolo;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -12,6 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import de.benevolo.entities.User;
+import de.benevolo.entities.UserUpdateRepository;
+
 import java.util.List;
 
 @Path("/user/")

@@ -1,4 +1,4 @@
-package de.thi.rest;
+package de.benevolo.rest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -7,7 +7,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.thi.entities.User;
+import de.benevolo.entities.User;
 
 @ApplicationScoped
 public class RestArchiver {

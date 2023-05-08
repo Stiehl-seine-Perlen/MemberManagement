@@ -1,13 +1,13 @@
-package de.thi.beans;
-
-import de.thi.entities.User;
-import de.thi.entities.UserUpdateRepository;
+package de.benevolo.beans;
 
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+
+import de.benevolo.entities.User;
+import de.benevolo.entities.UserUpdateRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 @Transactional

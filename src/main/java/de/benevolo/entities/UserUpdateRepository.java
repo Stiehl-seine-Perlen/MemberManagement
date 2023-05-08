@@ -1,4 +1,4 @@
-package de.thi.entities;
+package de.benevolo.entities;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 

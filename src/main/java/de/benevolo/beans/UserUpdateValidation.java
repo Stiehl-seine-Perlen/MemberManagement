@@ -1,11 +1,10 @@
-package de.thi.beans;
-
-import de.thi.entities.User;
-//import de.thi.beans.ValidateRegistration;
-import de.thi.entities.UserUpdateRepository;
+package de.benevolo.beans;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+
+import de.benevolo.entities.User;
+import de.benevolo.entities.UserUpdateRepository;
 
 @ApplicationScoped
 public class UserUpdateValidation{

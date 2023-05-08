@@ -1,7 +1,8 @@
-package de.thi.rest;
+package de.benevolo.rest;
 
-import de.thi.entities.User;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
+import de.benevolo.entities.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
