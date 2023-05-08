@@ -11,14 +11,14 @@ import javax.inject.Inject;
 public class NewUserMessages {
 
 
-    public void sendWelcomeEmail(String userID) {
-        System.out.println("Welcome Email sent to .... " + userID);
-        sendEmail(userID);
+    public void sendWelcomeEmail(String username) {
+        System.out.println("Welcome Email sent to .... " + username);
+        sendEmail(username);
     }
 
-    public void sendRecommendationEmail(String userID) {
-        System.out.println("Recommendation Email sent to .... " + userID);
-        sendEmail(userID);                                                  //TODO: Change to recommendation email
+    public void sendRecommendationEmail(String username) {
+        System.out.println("Recommendation Email sent to .... " + username);
+        sendEmail(username);                                                  //TODO: Change to recommendation email
 
     }
 
@@ -27,13 +27,13 @@ public class NewUserMessages {
     Mailer mailer;
 
 
-    public void sendEmail(String userID) {
+    public void sendEmail(String username) {
 
         Mail mail = new Mail();
         mail.addTo("info@example.org"); //TODO: Change to user email
         mail.setFrom("no-reply@benevolo.de");
         mail.setSubject("Welcome to Benevolo!");
-        mail.setText("Hello to User: "+ userID); //TODO: Change to html template
+        mail.setText("Hello to User: "+ username); //TODO: Change to html template
         //mail.setHtml()
 
         mailer.send(mail);
