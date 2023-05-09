@@ -2,23 +2,26 @@ package de.thi.entities;
 
 import javax.persistence.Entity;
 
-public class UserAsscociationDTO {
-    private User user;
+import de.benevolo.entities.association.Association;
+import de.benevolo.entities.user.PlatformUser;
+
+public class UserAssociationDTO {
+    private PlatformUser user;
     private Association association;
    
-   public UserAsscociationDTO(){
+   public UserAssociationDTO(){
 
    }
 
-   public UserAsscociationDTO(User user, Association association){
+   public UserAssociationDTO(PlatformUser user, Association association){
         this.user = user;
         this.association = association;
    }
    
-    public User getUser() {
+    public PlatformUser getUser() {
         return user;
     }
-    public void setUser(User user) {
+    public void setUser(PlatformUser user) {
         this.user = user;
     }
     public Association getAssociation() {

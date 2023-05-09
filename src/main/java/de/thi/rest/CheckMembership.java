@@ -1,86 +1,35 @@
 package de.thi.rest;
 
-import java.util.ArrayList;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.core.MediaType;
 
-import de.thi.entities.Association;
-import de.thi.entities.User;
+
+
+// IMPORT ENTITIES REPO
+import de.thi.entities.UserAssociationDTO;
 import de.thi.jpa.MembershipRepository;
-import de.thi.jpa.UserRegistration;
 
+//@Path("/aha")
 @ApplicationScoped
 // Get process context of kogito application
 public class CheckMembership {
 
-    @Inject
+    @Inject //NOT USED YET
     MembershipRepository membershipRepository;
 
-    @Inject
-    UserRegistration userRegistration;
+    //@Path("/aha")
 
-    @POST // POST Endpunkt
-	@Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
-	public boolean checkStatus(User user, Association association)
-	{
+    public boolean checkStatus(UserAssociationDTO uaDTO) {
 
-
-
-        String username = "Mr.Fake";  //String nur zum testen 
-
-        if(user != null){ //Testen ob ein User Objekt übergeben wurde
-            System.out.println("Übergebene User vollständig -> " + user.toString());
-            username = user.getUsername();
-        }else{  //User ist NULL -> Zu testzwecken wird der Parameter initialisiert
-            User nUser = new User("Carlo Ancelotti", "djijij111", "kilian12345");
-            user = nUser;
-            System.out.println("Übergebene User ist NULL");
-        }
-
-
-        //Das selbe wie Oben zum testen -> jetzt aber für Association
-        if(association != null){
-           // ArrayList <String> memberList = association.getMemberList();
+         if(uaDTO != null){
+            System.out.println("User ist voll: " + uaDTO.toString() + "----> " + uaDTO.getUser().getId() + " " + uaDTO.getUser().getName() + " " + uaDTO.getUser().getAdmin());
+            System.out.println("Asso ist voll: " +uaDTO.toString() + "----- >" + " " + uaDTO.getAssociation().getId() + " " + uaDTO.getAssociation().getBusinessMail());
         }else{
-            ArrayList <String> nList = new ArrayList<String>(){
-            {
-                add("torsten");
-                add("janina"); 
-                add("franco");
-                add("brad");
-            }
-        };
-            Association nAssociation = new Association("Fc Bayern", "bayern@bayern.com", "ijidjeji1232", nList);
-            association = nAssociation;
-        }
-        
-
-        //Überprüfung ob user bereits in der mitgliederliste ist
-        boolean found = false;
-        for(String usernameSearch : association.getMemberList()){
-            if(usernameSearch.equals(username)){
-                System.out.println("User: " + username +" ist vorhanden!");
-                found = true;
-            }else{
-                found = false;
-            }
+            System.out.println("LEER: ------ ");
         }
 
-        //Rückgabe des Ergebnisses der Überprüfung
-        if(found == true){
-            System.out.println(user.getUsername()+ " is already Member in " + association.getName() + "!");
-            return found;
-        }else{
-            System.out.println(user.getUsername() + " is NOT Member of " + association.getName() + "!");
-            return found;
-        
-	    }
+
+        return true;
     }
 
 }
