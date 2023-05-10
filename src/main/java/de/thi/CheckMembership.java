@@ -19,6 +19,7 @@ import de.thi.jpa.MembershipRepository;
 public class CheckMembership {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckMembership.class);
+    private boolean result ;
 
     @Inject // NOT USED YET
     MembershipRepository membershipRepository;
@@ -26,34 +27,30 @@ public class CheckMembership {
     @Transactional
     public boolean checkStatus(PlatformUser user, Association association) {
 
-        //Tests
+        // Tests - Ignore it
         if (user != null && association != null) {
-            LOGGER.info("User passed: "+ user.getName() + "\tAssociation passed: " + association.getAssociationName());
+            LOGGER.info("User passed: " + user.getName() + "\tAssociation passed: " + association.getAssociationName());
         } else {
             LOGGER.info("LEER: -------------------------------------- ");
         }
-       
 
         try {
+            LOGGER.info("Getting all Memberships with specific UserId.");
+            List<Membership> userMembershipList = membershipRepository.list("userid", user.getId());            
+            LOGGER.info("Generated List: " + userMembershipList);
 
-            // userMembershipList.add(membershipRepository.find("userId", user.getId()));
-           // LinkedList<Membership> userMembershipList = new LinkedList<Membership>();
+            // <--- Insert Code to select Membership with matching Association --->
 
+            // Idea: Predict Membership from passed user and association and compare it with list items
             Membership predictedMembership = new Membership(user.getId(), null, association);
 
-
-            List<Membership> userMembershipList = membershipRepository.list("userid", user.getId());
-
-            userMembershipList.addAll(membershipRepository.list("userid", user.getId()));
-
-            LOGGER.info("Doing Something!");
-            LOGGER.info("List: " + userMembershipList);
+            return result = true; // -> Already Member
+            
         } catch (Exception e) {
-      
-            LOGGER.error("Exception -> Error : fuck u", e);
+            LOGGER.error("Exception -> Error : ", e);
+            return result = false; // -> No Member
         }
-        
-        return true;
+
     }
 
 }
