@@ -1,0 +1,23 @@
+{
+  "association": {
+    "associationName": "string",
+    "businessMail": "string",
+    "password": "string",
+    "created": "2022-03-10T12:15:50",
+    "associationRoles": [
+      {
+        "associationRoleId": 0,
+        "roleName": "string",
+        "roleDescription": "string",
+        "canTransaction": true,
+        "canAccount": true,
+        "canEvent": true,
+        "association": {}
+      }
+    ]
+  },
+  "user": {
+    "name": "string",
+    "isAdmin": true
+  }
+}
