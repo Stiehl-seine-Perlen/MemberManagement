@@ -19,7 +19,6 @@ import de.thi.jpa.MembershipRepository;
 public class CheckMembership {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckMembership.class);
-    private boolean result ;
 
     @Inject // NOT USED YET
     MembershipRepository membershipRepository;
@@ -44,11 +43,11 @@ public class CheckMembership {
             // Idea: Predict Membership from passed user and association and compare it with list items
             Membership predictedMembership = new Membership(user.getId(), null, association);
 
-            return result = true; // -> Already Member
+            return true; // -> Already Member
             
         } catch (Exception e) {
             LOGGER.error("Exception -> Error : ", e);
-            return result = false; // -> No Member
+            return false; // -> No Member
         }
 
     }
