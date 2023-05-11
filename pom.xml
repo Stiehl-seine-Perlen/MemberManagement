@@ -82,6 +82,14 @@
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-addons-quarkus-source-files</artifactId>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>runtime-tools-quarkus-extension</artifactId>
+    </dependency>
+
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
@@ -90,7 +98,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
-   
+
     <!-- Hibernate ORM specific dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
