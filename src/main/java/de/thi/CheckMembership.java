@@ -52,7 +52,7 @@ public class CheckMembership {
             LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
         }; 
 
-        LOGGER.error("user: " + user.getName());
+        LOGGER.info("user: " + user.getName());
         return result;
     }
 }
