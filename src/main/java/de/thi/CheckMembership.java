@@ -5,6 +5,9 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,27 +23,28 @@ public class CheckMembership {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckMembership.class);
 
-    @Inject // NOT USED YET
+    @Inject
     MembershipRepository membershipRepository;
 
+    @POST
+    @Consumes((MediaType.APPLICATION_JSON))
     @Transactional
-    public boolean checkStatus(PlatformUser user, Association association) {
+    public Boolean checkStatus(PlatformUser user, Association association) {
         
-        boolean result = false;
+        Boolean result = false;
 
         try {
              
             LOGGER.info("Getting all Memberships with User -> " + user.getName() + " and Association -> " + association.getAssociationName());
 
             // Code to select Membership with matching association id und user id
-            // When no matches list is empty
+            // No matches -> empty list
 
             List<Membership> userMembershipList = membershipRepository.list("FROM Membership WHERE associationrole_associationroleid IS " + association.getId() + " AND userid IS " + user.getId());
             LOGGER.info("Generated List: " + userMembershipList);
 
-            if(userMembershipList.isEmpty()){
-                result = false; // -> No Member
-            }else{
+            if(userMembershipList.isEmpty() != true){
+                LOGGER.info("Generated List EMPTY?: " + userMembershipList.isEmpty());
                 result = true; // -> Already Member
             }
            
@@ -48,6 +52,7 @@ public class CheckMembership {
             LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
         }; 
 
+        LOGGER.error("user: " + user.getName());
         return result;
     }
 }

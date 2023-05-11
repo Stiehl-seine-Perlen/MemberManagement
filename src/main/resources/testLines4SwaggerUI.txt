@@ -1,3 +1,5 @@
+// association -> muss in {} abgeändert werden!
+
 {
   "association": {
     "associationName": "string",
@@ -51,5 +53,36 @@
     "name": "string",
     "isAdmin": true,
     "admin": true
+  }
+}
+
+
+{
+  
+  "association": {
+    "id": 15
+  },
+  
+  "user": {
+    "id": 59
+   
+  }
+}
+
+
+
+{
+  "association": {
+    "id": 1,
+    "associationName": "Bayern München",
+    "businessMail": "bayern@web.de",
+    "password": "safeword3474",
+    "created": "2022-03-10T12:15:50"
+    
+  },
+  "user": {
+    "id": 1,
+    "name": "Philip",
+    "isAdmin": false
   }
 }

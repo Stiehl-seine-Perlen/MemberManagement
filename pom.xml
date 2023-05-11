@@ -4,9 +4,12 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>de.thi</groupId>
   <artifactId>seed</artifactId>
+
   <version>1.0.0-SNAPSHOT</version>
+
   <properties>
     <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
@@ -14,11 +17,11 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.16.5.Final</quarkus.platform.version>
+    <quarkus.platform.version>2.16.7.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-    <version.infinispan>14.0.8.Final</version.infinispan>
   </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -37,16 +40,35 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
-    <dependency>
-      <groupId>de.benevolo</groupId>
-      <artifactId>entities-repo</artifactId>
-      <version>1.1.4-SNAPSHOT</version>
-    </dependency>
+    <!-- Quarkus -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jackson</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-arc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
+
+    <!-- Kogito -->
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-addons-quarkus-process-svg</artifactId>
@@ -64,16 +86,12 @@
       <artifactId>kogito-quarkus-processes</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-openapi</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-task-management</artifactId>
     </dependency>
     <dependency>
       <groupId>org.kie.kogito</groupId>
-      <artifactId>kogito-addons-quarkus-task-management</artifactId>
+      <artifactId>kogito-addons-quarkus-process-management</artifactId>
     </dependency>
     <dependency>
       <groupId>org.kie.kogito</groupId>
@@ -84,21 +102,30 @@
       <artifactId>kogito-addons-quarkus-source-files</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-data-index-infinispan</artifactId>
     </dependency>
+
+    <!-- Repo benevolo -->
+    <dependency>
+      <groupId>de.benevolo</groupId>
+      <artifactId>entities-repo</artifactId>
+      <version>1.1.4-SNAPSHOT</version>
+    </dependency>
+
+    <!-- Hibernate ORM specific dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy</artifactId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
     </dependency>
+
+    <!-- JDBC driver dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-oidc</artifactId>
+      <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-keycloak-authorization</artifactId>
-    </dependency>
+
+    <!-- Test -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
@@ -109,19 +136,8 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-orm-panache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kie.kogito</groupId>
-      <artifactId>kogito-addons-quarkus-data-index-infinispan</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jdbc-postgresql</artifactId>
-    </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
