@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.benevolo.entities.user.PlatformUser;
+import org.json.JSONObject;
 import org.kie.kogito.Model;
 import org.kie.kogito.process.Process;
 import org.kie.kogito.process.ProcessInstance;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.json.Json;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,34 +27,39 @@ public class StartRegistrationProcessResource {
     Process<? extends Model>  welcomeNewUserProcess;
 
     @POST
+    @Path("/Admin")
     @Consumes("application/json")
     @Produces("application/json")
-    public void startRegistrationProcess(String event) {
-        System.out.println("Registration Process started");
+    public void startRegistrationProcessAdmin(String event) {
+        System.out.println("Registration Process *Admin* started");
+        System.out.println(event);
 
         try {
+
+            // Parse Event
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode1 = objectMapper.readTree(event);
-            String user = jsonNode1.get("representation").asText();
+            JsonNode eventNode = objectMapper.readTree(event);
+            String userString = eventNode.get("representation").asText();
 
-            System.out.println("Userdata form Event: " + user);
+            System.out.println("Userdata form Event: " + userString);
 
-            JsonNode jsonNode2 = objectMapper.readTree(user);
-            String username = jsonNode2.get("username").asText();
+            // Extract username from EventData
+            JsonNode userNode = objectMapper.readTree(userString);
+            String username = userNode.get("username").asText();
             System.out.println("Extracted username: " + username);
 
+            // Create User Object from EventData
             PlatformUser platformUser = new PlatformUser(username);
 
+            // Create Model for Process
             Model model = welcomeNewUserProcess.createModel();
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("username", username);
 		    model.fromMap(parameters);
 
-		    // when
+		    // Start Process
 		    ProcessInstance<?> processInstance = welcomeNewUserProcess.createInstance(model);
 		    processInstance.start();
-
-
 
 
         }
@@ -65,6 +70,48 @@ public class StartRegistrationProcessResource {
         }
 
 
+
+    }
+
+
+    @POST
+    @Path("/User")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public void startRegistrationProcessUser(String event){
+
+        System.out.println("Registration Process *User* started");
+        System.out.println(event);
+        try {
+
+
+            // Parse Event
+            JSONObject obj = new JSONObject(event);
+            String username = obj.getJSONObject("details").getString("username");
+
+            System.out.println("Extracted username: " + username);
+
+            PlatformUser platformUser = new PlatformUser(username);
+
+            // Create Model for Process
+            Model model = welcomeNewUserProcess.createModel();
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("username", username);
+            model.fromMap(parameters);
+
+            // Start Process
+            ProcessInstance<?> processInstance = welcomeNewUserProcess.createInstance(model);
+            processInstance.start();
+
+
+
+        }
+        catch (Exception e){
+            System.out.println("Error while parsing event!!!");
+            System.out.println("apporting...");
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
