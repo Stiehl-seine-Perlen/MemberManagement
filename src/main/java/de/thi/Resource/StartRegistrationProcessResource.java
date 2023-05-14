@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import org.kie.kogito.Model;
 import org.kie.kogito.process.Process;
 import org.kie.kogito.process.ProcessInstance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,6 +24,8 @@ import java.util.Map;
 @Path("/startRegistrationProcess")
 public class StartRegistrationProcessResource {
 
+    private static final Logger LOG = LoggerFactory.getLogger(StartRegistrationProcessResource.class);
+
     @Inject
     @Named("welcomeNewUserProcess")
     Process<? extends Model>  welcomeNewUserProcess;
@@ -31,8 +35,8 @@ public class StartRegistrationProcessResource {
     @Consumes("application/json")
     @Produces("application/json")
     public void startRegistrationProcessAdmin(String event) {
-        System.out.println("Registration Process *Admin* started");
-        System.out.println(event);
+        LOG.info("Registration Process *Admin* started");
+        LOG.info(event);
 
         try {
 
@@ -41,12 +45,12 @@ public class StartRegistrationProcessResource {
             JsonNode eventNode = objectMapper.readTree(event);
             String userString = eventNode.get("representation").asText();
 
-            System.out.println("Userdata form Event: " + userString);
+            LOG.info("Userdata from Event: " + userString);
 
             // Extract username from EventData
             JsonNode userNode = objectMapper.readTree(userString);
             String username = userNode.get("username").asText();
-            System.out.println("Extracted username: " + username);
+            LOG.info("Extracted username: " + username);
 
             // Create User Object from EventData
             PlatformUser platformUser = new PlatformUser(username);
@@ -64,9 +68,9 @@ public class StartRegistrationProcessResource {
 
         }
         catch (JsonProcessingException e) {
-            System.out.println("Error while parsing event!!!");
-            System.out.println("apporting...");
-            System.out.println("Error: " + e.getMessage());
+            LOG.info("Error while parsing event!!!");
+            LOG.info("apporting...");
+            LOG.info("Error: " + e.getMessage());
         }
 
 
@@ -80,8 +84,8 @@ public class StartRegistrationProcessResource {
     @Produces("application/json")
     public void startRegistrationProcessUser(String event){
 
-        System.out.println("Registration Process *User* started");
-        System.out.println(event);
+        LOG.info("Registration Process *User* started");
+        LOG.info(event);
         try {
 
 
@@ -89,7 +93,7 @@ public class StartRegistrationProcessResource {
             JSONObject obj = new JSONObject(event);
             String username = obj.getJSONObject("details").getString("username");
 
-            System.out.println("Extracted username: " + username);
+            LOG.info("Extracted username: " + username);
 
             PlatformUser platformUser = new PlatformUser(username);
 
@@ -107,9 +111,9 @@ public class StartRegistrationProcessResource {
 
         }
         catch (Exception e){
-            System.out.println("Error while parsing event!!!");
-            System.out.println("apporting...");
-            System.out.println("Error: " + e.getMessage());
+            LOG.info("Error while parsing event!!!");
+            LOG.info("apporting...");
+            LOG.info("Error: " + e.getMessage());
             e.printStackTrace();
         }
 

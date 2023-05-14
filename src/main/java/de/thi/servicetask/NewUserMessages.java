@@ -4,20 +4,25 @@ import io.quarkus.mailer.reactive.ReactiveMailer;
 import io.smallrye.mutiny.Uni;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
 public class NewUserMessages {
+    
+    private static final Logger LOG = LoggerFactory.getLogger(NewUserMessages.class);
 
 
     public void sendWelcomeEmail(String username) {
-        System.out.println("Welcome Email sent to .... " + username);
+        LOG.info("Welcome Email sent to .... " + username);
         sendEmail(username);
     }
 
     public void sendRecommendationEmail(String username) {
-        System.out.println("Recommendation Email sent to .... " + username);
+        LOG.info("Recommendation Email sent to .... " + username);
         sendEmail(username);                                                  //TODO: Change to recommendation email
 
     }
