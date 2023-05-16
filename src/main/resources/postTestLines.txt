@@ -1,0 +1,24 @@
+
+{
+  "memberStatus": false,
+  "reviewStatus": false,
+  "DTO": {
+    "user": {
+      "username": "torstenlegat420",
+      "password": "legi8763",
+      "email": "torsten@web.de"
+    },
+    "association": {
+      "name": "Wolfsburg FC",
+      "businessmail": "wolfi@fc.de",
+      "password": "safe238748",
+      "created": "2022-03-10T12:15:50",
+      "memberList": [
+        "Henry",
+        "Rudi",
+        "WOlfgang"
+      ]
+    }
+   
+  }
+}
