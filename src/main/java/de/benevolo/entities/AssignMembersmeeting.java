@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
+@Table(name = "membersmeeting")
 public class AssignMembersmeeting {
 
     @Id
@@ -55,6 +57,7 @@ public class AssignMembersmeeting {
     @CreationTimestamp
     private LocalDateTime when;
 
+    protected AssignMembersmeeting() {}
     @JsonCreator
     public AssignMembersmeeting(@JsonProperty(value = "date", required = true) Date date,
                                 @JsonProperty(value = "location", required = true) String location,
