@@ -27,8 +27,8 @@ public class StartRegistrationProcessResource {
     private static final Logger LOG = LoggerFactory.getLogger(StartRegistrationProcessResource.class);
 
     @Inject
-    @Named("welcomeNewUserProcess")
-    Process<? extends Model>  welcomeNewUserProcess;
+    @Named("NewUserMessageProcess")
+    Process<? extends Model>  NewUserMessageProcess;
 
     @POST
     @Path("/Admin")
@@ -50,19 +50,25 @@ public class StartRegistrationProcessResource {
             // Extract username from EventData
             JsonNode userNode = objectMapper.readTree(userString);
             String username = userNode.get("username").asText();
+            String email = userNode.get("email").asText();
             LOG.info("Extracted username: " + username);
+            LOG.info("Extracted email: " + email);
 
             // Create User Object from EventData
             PlatformUser platformUser = new PlatformUser(username);
 
             // Create Model for Process
-            Model model = welcomeNewUserProcess.createModel();
+            Model model = NewUserMessageProcess.createModel();
             Map<String, Object> parameters = new HashMap<>();
-            parameters.put("username", username);
+            //Username and Email as JSON String
+            String usernameAndEmail = "{\"username\": \"" + username + "\", \"email\": \"" + email + "\"}";
+
+            // Give Model the Username and Email as Json String, because Kogito can't handle 2 Arguments...
+            parameters.put("usernameAndEmail", usernameAndEmail);
 		    model.fromMap(parameters);
 
 		    // Start Process
-		    ProcessInstance<?> processInstance = welcomeNewUserProcess.createInstance(model);
+		    ProcessInstance<?> processInstance = NewUserMessageProcess.createInstance(model);
 		    processInstance.start();
 
 
@@ -92,19 +98,25 @@ public class StartRegistrationProcessResource {
             // Parse Event
             JSONObject obj = new JSONObject(event);
             String username = obj.getJSONObject("details").getString("username");
+            String email = obj.getJSONObject("details").getString("email");
 
             LOG.info("Extracted username: " + username);
+            LOG.info("Extracted email: " + email);
 
             PlatformUser platformUser = new PlatformUser(username);
 
             // Create Model for Process
-            Model model = welcomeNewUserProcess.createModel();
+            Model model = NewUserMessageProcess.createModel();
             Map<String, Object> parameters = new HashMap<>();
-            parameters.put("username", username);
+            //Username and Email as Json String
+            String usernameAndEmail = "{\"username\": \"" + username + "\", \"email\": \"" + email + "\"}";
+
+            // Give Model the Username and Email as Json String, because Kogito can't handle 2 Arguments...
+            parameters.put("usernameAndEmail", usernameAndEmail);
             model.fromMap(parameters);
 
             // Start Process
-            ProcessInstance<?> processInstance = welcomeNewUserProcess.createInstance(model);
+            ProcessInstance<?> processInstance = NewUserMessageProcess.createInstance(model);
             processInstance.start();
 
 
