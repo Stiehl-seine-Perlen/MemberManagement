@@ -9,16 +9,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("PlatformUser")
+@Path("/")
 public class PlatformUserResource {
 
     @Inject
     PlatformUserService platformUserService;
 
     @GET
-    @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-
     public List<PlatformUser> getAllPlatformUsers(){return platformUserService.getAllPlatformUsers();}
 
     @GET

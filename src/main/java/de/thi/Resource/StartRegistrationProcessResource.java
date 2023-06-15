@@ -41,9 +41,10 @@ public class StartRegistrationProcessResource {
 
             JsonNode jsonNode2 = objectMapper.readTree(user);
             String username = jsonNode2.get("username").asText();
+            String email = "test@test.test"; //TODO: we need to extract the email too
             System.out.println("Extracted username: " + username);
 
-            PlatformUser platformUser = new PlatformUser(username);
+            PlatformUser platformUser = new PlatformUser(username, email);
 
             Model model = welcomeNewUserProcess.createModel();
             Map<String, Object> parameters = new HashMap<>();
