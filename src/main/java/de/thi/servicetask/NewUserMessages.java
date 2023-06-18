@@ -5,15 +5,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.benevolo.MailService;
 import de.benevolo.email.Email;
-import io.quarkus.mailer.Mail;
-import io.quarkus.mailer.Mailer;
-import org.eclipse.microprofile.config.inject.ConfigProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.resource.spi.ConfigProperty;
+
 
 @ApplicationScoped
 public class NewUserMessages {
@@ -49,10 +45,6 @@ public class NewUserMessages {
 
     public void sendEmail(String username, String email_adress_new_user) {
 
-
-        //TODO: Change to SMTP Client of Benevolo!
-
-
         String welcomeMail = """
                 <!DOCTYPE html>
                 <html>
@@ -63,7 +55,7 @@ public class NewUserMessages {
                 <body>
                   <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
                     <h1>Willkommen bei Benevolo!</h1>
-                    <p>Hallo $username!,</p>
+                    <p>Hallo <b> $username</b>!</p>
                     <p>Herzlich willkommen bei Benevolo! Wir freuen uns, dass du dich für unseren Service entschieden hast, um Vereine zu managen.</p>
                     <p>Als Mitglied unserer Plattform hast du Zugriff auf eine Vielzahl von Funktionen, die dir dabei helfen, den Verein effizient zu organisieren, Kommunikationen zu verwalten und Mitglieder einzubinden.</p>
                     <p>Unser Team steht dir jederzeit zur Verfügung, um dir bei Fragen oder Problemen behilflich zu sein. Zögere nicht, uns zu kontaktieren.</p>
@@ -76,8 +68,7 @@ public class NewUserMessages {
                 """.replace("$username", username);
         Email email = new Email(
                 email_adress_new_user,
-                username,
-                "Willkommens-E-Mail",
+                username, "Willkommens-E-Mail",
                 welcomeMail,
                 "jav4296@thi.de ",
                 "Benevolo"
