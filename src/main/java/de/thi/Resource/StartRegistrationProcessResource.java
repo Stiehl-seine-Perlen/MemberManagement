@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.benevolo.entities.user.PlatformUser;
+import de.thi.services.PlatformUserService;
 import org.json.JSONObject;
 import org.kie.kogito.Model;
 import org.kie.kogito.process.Process;
@@ -29,6 +30,9 @@ public class StartRegistrationProcessResource {
     @Inject
     @Named("NewUserMessageProcess")
     Process<? extends Model>  NewUserMessageProcess;
+
+    @Inject
+    PlatformUserService platformUserService;
 
     @POST
     @Path("/Admin")
@@ -55,7 +59,9 @@ public class StartRegistrationProcessResource {
             LOG.info("Extracted email: " + email);
 
             // Create User Object from EventData
-            PlatformUser platformUser = new PlatformUser(username);
+            // Is this legal?
+            PlatformUser platformUser = new PlatformUser(username, email);
+            platformUserService.persistPlatformUser(platformUser);
 
             // Create Model for Process
             Model model = NewUserMessageProcess.createModel();
@@ -103,7 +109,10 @@ public class StartRegistrationProcessResource {
             LOG.info("Extracted username: " + username);
             LOG.info("Extracted email: " + email);
 
-            PlatformUser platformUser = new PlatformUser(username);
+             // Create User Object from EventData
+            // Is this legal?
+            PlatformUser platformUser = new PlatformUser(username, email);
+            platformUserService.persistPlatformUser(platformUser);
 
             // Create Model for Process
             Model model = NewUserMessageProcess.createModel();
