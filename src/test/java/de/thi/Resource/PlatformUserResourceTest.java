@@ -1,4 +1,4 @@
-package de.thi;
+package de.thi.Resource;
 
 import de.thi.repositories.PlatformUserRepository;
 import io.quarkus.test.junit.QuarkusTest;
