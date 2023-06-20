@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.A;
 
 @ApplicationScoped
 public class PlatformUserService {
