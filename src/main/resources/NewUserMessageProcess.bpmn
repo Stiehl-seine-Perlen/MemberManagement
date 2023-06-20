@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_w_R7YO3iEDu5xqUnfoIqSQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_8hiPkPGxEDu1bcCquuh8Eg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_usernameAndEmailItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_InMessageType" structureRef=""/>
   <bpmn2:itemDefinition id="_E2B1CA10-0FF3-4EBF-9078-9D205BA9C4BC_OutMessageType" structureRef=""/>
@@ -23,8 +23,8 @@
       <bpmn2:outMessageRef>_ECF3C2D8-7B27-44BA-B0E7-30362FE25BB2_OutMessage</bpmn2:outMessageRef>
     </bpmn2:operation>
   </bpmn2:interface>
-  <bpmn2:collaboration id="_FC527FA4-AE29-4AC4-A5C0-9A9ED7854FD2" name="Default Collaboration">
-    <bpmn2:participant id="_DEB8F7E4-8F1A-48FB-AFA2-9E79D004C89C" name="Pool Participant" processRef="NewUserMessageProcess"/>
+  <bpmn2:collaboration id="_267A424F-8362-4ADA-BC2B-A82C0B8F2643" name="Default Collaboration">
+    <bpmn2:participant id="_97A202D1-4AD7-4EF8-8D5C-FDF0D5852074" name="Pool Participant" processRef="NewUserMessageProcess"/>
   </bpmn2:collaboration>
   <bpmn2:process id="NewUserMessageProcess" drools:packageName="de.thi" drools:version="1.0" drools:adHoc="false" name="NewUserMessageProcess" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
@@ -54,7 +54,12 @@
         <bpmn2:targetRef>_ECF3C2D8-7B27-44BA-B0E7-30362FE25BB2_usernameInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
     </bpmn2:serviceTask>
-    <bpmn2:intermediateCatchEvent id="_66E46795-5FA7-4D87-8207-45EAFAE73E82">
+    <bpmn2:intermediateCatchEvent id="_66E46795-5FA7-4D87-8207-45EAFAE73E82" name="3 Tage">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[3 Tage]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
       <bpmn2:incoming>_616D7DD4-1F4B-42B2-B870-96895C847596</bpmn2:incoming>
       <bpmn2:outgoing>_D0FD6A4B-F777-4E1A-B9BA-A71AF3BEC234</bpmn2:outgoing>
       <bpmn2:timerEventDefinition>
@@ -182,7 +187,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_w_R7YO3iEDu5xqUnfoIqSQ</bpmn2:source>
-    <bpmn2:target>_w_R7YO3iEDu5xqUnfoIqSQ</bpmn2:target>
+    <bpmn2:source>_8hiPkPGxEDu1bcCquuh8Eg</bpmn2:source>
+    <bpmn2:target>_8hiPkPGxEDu1bcCquuh8Eg</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
