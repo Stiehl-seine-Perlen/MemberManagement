@@ -4,3 +4,8 @@
 - Set env Variables (provided by Jan)
 - Register in corresponding Realm and get Welcome E-Mail 🎉
   (E-Mail will also be send when user gets registered over Admin ui)
+
+## Features
+- Registration Process for sending a welcome E-Mail and later a recommendation E-Mail
+- The Registration Process creates a PlatformUser in DB with correct Username & E-Mail
+- PlatformUser API
