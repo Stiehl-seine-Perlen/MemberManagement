@@ -86,3 +86,18 @@
     "isAdmin": false
   }
 }
+
+{
+  "association": {
+    "id": 0,
+    "associationName": "nulli",
+    "businessMail":  "nulli@web.de"
+   
+    
+  },
+  "user": {
+    "id": 0,
+    "name": "phil",
+    "isAdmin": false
+  }
+}
