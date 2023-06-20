@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_6P4ykOmZEDuaP5iZBhVIng" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
-  <bpmn2:itemDefinition id="_membersmeetingItem" structureRef="de.benevolo.entities.AssignMembersmeeting"/>
-  <bpmn2:itemDefinition id="_membersmeetingTypeItem" structureRef="String"/>
-  <bpmn2:itemDefinition id="_memebersmeetingMsgItem" structureRef="String"/>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_z9jmsPGNEDutt5M7xEBprQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_membermeetingItem" structureRef="de.benevolo.membermeetingmanagement.entities.Membermeeting"/>
+  <bpmn2:itemDefinition id="_membermeetingMsgItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_isClosedItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_InMessageType" structureRef=""/>
   <bpmn2:itemDefinition id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_OutMessageType" structureRef=""/>
-  <bpmn2:itemDefinition id="__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membersmeetingInputXItem" structureRef="de.benevolo.entities.AssignMembersmeeting"/>
+  <bpmn2:itemDefinition id="__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membermeetingInputXItem" structureRef="de.benevolo.membermeetingmanagement.entities.Membermeeting"/>
   <bpmn2:itemDefinition id="__FCA01817-9394-4256-B6EB-C996C8A87F9A_SkippableInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__FCA01817-9394-4256-B6EB-C996C8A87F9A_PriorityInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__FCA01817-9394-4256-B6EB-C996C8A87F9A_CommentInputXItem" structureRef="Object"/>
@@ -30,38 +30,32 @@
   <bpmn2:itemDefinition id="__3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA_NotCompletedReassignInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA_NotStartedNotifyInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA_NotCompletedNotifyInputXItem" structureRef="Object"/>
-  <bpmn2:itemDefinition id="__8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembersmeetingMsgInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembermeetingMsgInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="openMembersmeetingMsgType" structureRef="String"/>
-  <bpmn2:itemDefinition id="__08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembersmeetingMsgInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembermeetingMsgInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="closedMembersmeetingMsgType" structureRef="String"/>
   <bpmn2:message id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_InMessage" itemRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_InMessageType"/>
   <bpmn2:message id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_OutMessage" itemRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_OutMessageType"/>
-  <bpmn2:interface id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceInterface" name="de.benevolo.rest.MembersmeetingApi" implementationRef="de.benevolo.rest.MembersmeetingApi">
-    <bpmn2:operation id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceOperation" name="addMembersmeeting" implementationRef="addMembersmeeting">
+  <bpmn2:interface id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceInterface" name="de.benevolo.membermeetingmanagement.services.MembermeetingService" implementationRef="de.benevolo.membermeetingmanagement.services.MembermeetingService">
+    <bpmn2:operation id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceOperation" name="addMembermeeting" implementationRef="addMembermeeting">
       <bpmn2:inMessageRef>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_InMessage</bpmn2:inMessageRef>
       <bpmn2:outMessageRef>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_OutMessage</bpmn2:outMessageRef>
     </bpmn2:operation>
   </bpmn2:interface>
-  <bpmn2:message id="_6P_gQOmZEDuaP5iZBhVIng" itemRef="openMembersmeetingMsgType" name="openMembersmeetingMsg"/>
-  <bpmn2:message id="_6P_gQemZEDuaP5iZBhVIng" itemRef="closedMembersmeetingMsgType" name="closedMembersmeetingMsg"/>
-  <bpmn2:collaboration id="_87AB3EF7-CA7C-4541-8EAA-D2AF5E56B42E" name="Default Collaboration">
-    <bpmn2:participant id="_1F3E5955-5BC1-4C5B-B1DB-F7B72FB82F92" name="Pool Participant" processRef="CreateMemberMeeting"/>
+  <bpmn2:message id="_z9ofMPGNEDutt5M7xEBprQ" itemRef="openMembersmeetingMsgType" name="openMembersmeetingMsg"/>
+  <bpmn2:message id="_z9pGQPGNEDutt5M7xEBprQ" itemRef="closedMembersmeetingMsgType" name="closedMembersmeetingMsg"/>
+  <bpmn2:collaboration id="_79FD6056-8F46-41EB-8420-79448962910A" name="Default Collaboration">
+    <bpmn2:participant id="_3CCC5237-773E-46B7-BDDD-9E70D5299F5A" name="Pool Participant" processRef="CreateMemberMeeting"/>
   </bpmn2:collaboration>
-  <bpmn2:process id="CreateMemberMeeting" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="membersMeeting2" isExecutable="true" processType="Public">
+  <bpmn2:process id="CreateMemberMeeting" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="membersMeeting" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
-      <drools:import name="de.benevolo.entities.AssignMembersmeeting"/>
-      <drools:import name="de.benevolo.rest.MembersmeetingApi"/>
+      <drools:import name="de.benevolo.membermeetingmanagement.entities.Membermeeting"/>
+      <drools:import name="de.benevolo.mebermeetingmanagement.services.MembermeetingService"/>
     </bpmn2:extensionElements>
-    <bpmn2:property id="membersmeeting" itemSubjectRef="_membersmeetingItem" name="membersmeeting"/>
-    <bpmn2:property id="membersmeetingType" itemSubjectRef="_membersmeetingTypeItem" name="membersmeetingType"/>
-    <bpmn2:property id="memebersmeetingMsg" itemSubjectRef="_memebersmeetingMsgItem" name="memebersmeetingMsg"/>
-    <bpmn2:sequenceFlow id="_0E6C8D5A-5C93-4734-A7B7-BBE1EEDFEF75" sourceRef="_F8324CD4-D399-4145-93C6-A07409CAFA41" targetRef="_0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F">
-      <bpmn2:extensionElements>
-        <drools:metaData name="isAutoConnection.target">
-          <drools:metaValue><![CDATA[true]]></drools:metaValue>
-        </drools:metaData>
-      </bpmn2:extensionElements>
-    </bpmn2:sequenceFlow>
+    <bpmn2:property id="membermeeting" itemSubjectRef="_membermeetingItem" name="membermeeting"/>
+    <bpmn2:property id="membermeetingMsg" itemSubjectRef="_membermeetingMsgItem" name="membermeetingMsg"/>
+    <bpmn2:property id="isClosed" itemSubjectRef="_isClosedItem" name="isClosed"/>
+    <bpmn2:sequenceFlow id="_EADF5C6B-592B-4311-8B0F-F88D24CD7E28" sourceRef="_F8324CD4-D399-4145-93C6-A07409CAFA41" targetRef="_0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F"/>
     <bpmn2:sequenceFlow id="_981034F0-A7B3-41CA-811F-AE85C74CB3B0" sourceRef="_08FC0B39-B0B3-489C-8B64-455861DFB93A" targetRef="_F8324CD4-D399-4145-93C6-A07409CAFA41"/>
     <bpmn2:sequenceFlow id="_6F95E0EC-9311-4B02-9075-9D1A2ABAD9F4" sourceRef="_8BB74133-71C8-46CD-8761-682BA4AFB8E0" targetRef="_F8324CD4-D399-4145-93C6-A07409CAFA41"/>
     <bpmn2:sequenceFlow id="_68AE425C-F366-4F7A-B1FC-D5B6843865F9" sourceRef="_3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA" targetRef="_08FC0B39-B0B3-489C-8B64-455861DFB93A"/>
@@ -72,7 +66,7 @@
           <drools:metaValue><![CDATA[closed]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return membersmeetingType == "OPEN"]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return isClosed;]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_FF5CB7DD-7E8C-4BFA-AD74-BB735CC81DC2" name="open" sourceRef="_126E47C2-8FB5-4175-8BDB-4E2A869F7D1B" targetRef="_FCA01817-9394-4256-B6EB-C996C8A87F9A">
       <bpmn2:extensionElements>
@@ -80,23 +74,23 @@
           <drools:metaValue><![CDATA[open]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return membersmeetingType == "OPEN"]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return !isClosed;]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_83FE1E1F-561B-4229-B25B-25143D7FC50A" sourceRef="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" targetRef="_126E47C2-8FB5-4175-8BDB-4E2A869F7D1B"/>
-    <bpmn2:sequenceFlow id="_59974497-E705-4E00-9E97-4EB18C78A303" sourceRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B" targetRef="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF"/>
-    <bpmn2:sequenceFlow id="_85705C2C-FA2B-43FB-B909-75C5D2B697C0" sourceRef="_E7FA0F25-9169-4373-A0A5-C61F58DA5D74" targetRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B"/>
+    <bpmn2:sequenceFlow id="_C6C67D0C-0ECD-479E-82EE-BCEA3660E6CA" sourceRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B" targetRef="_126E47C2-8FB5-4175-8BDB-4E2A869F7D1B"/>
+    <bpmn2:sequenceFlow id="_353CDF2A-B884-4D84-9792-D89DC6D33913" sourceRef="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" targetRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B"/>
+    <bpmn2:sequenceFlow id="_77E85ADE-D51E-4625-A6B4-48FC75DFAB4A" sourceRef="_E7FA0F25-9169-4373-A0A5-C61F58DA5D74" targetRef="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF"/>
     <bpmn2:endEvent id="_0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F" name="membersmeeting planend">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[membersmeeting planend]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_0E6C8D5A-5C93-4734-A7B7-BBE1EEDFEF75</bpmn2:incoming>
+      <bpmn2:incoming>_EADF5C6B-592B-4311-8B0F-F88D24CD7E28</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:exclusiveGateway id="_F8324CD4-D399-4145-93C6-A07409CAFA41" gatewayDirection="Converging">
       <bpmn2:incoming>_6F95E0EC-9311-4B02-9075-9D1A2ABAD9F4</bpmn2:incoming>
       <bpmn2:incoming>_981034F0-A7B3-41CA-811F-AE85C74CB3B0</bpmn2:incoming>
-      <bpmn2:outgoing>_0E6C8D5A-5C93-4734-A7B7-BBE1EEDFEF75</bpmn2:outgoing>
+      <bpmn2:outgoing>_EADF5C6B-592B-4311-8B0F-F88D24CD7E28</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:intermediateThrowEvent id="_08FC0B39-B0B3-489C-8B64-455861DFB93A" name="send invitation to member">
       <bpmn2:extensionElements>
@@ -106,15 +100,15 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_68AE425C-F366-4F7A-B1FC-D5B6843865F9</bpmn2:incoming>
       <bpmn2:outgoing>_981034F0-A7B3-41CA-811F-AE85C74CB3B0</bpmn2:outgoing>
-      <bpmn2:dataInput id="_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembersmeetingMsgInputX" drools:dtype="String" itemSubjectRef="__08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembersmeetingMsgInputXItem" name="closedMembersmeetingMsg"/>
+      <bpmn2:dataInput id="_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembermeetingMsgInputX" drools:dtype="String" itemSubjectRef="__08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembermeetingMsgInputXItem" name="closedMembermeetingMsg"/>
       <bpmn2:dataInputAssociation>
-        <bpmn2:sourceRef>memebersmeetingMsg</bpmn2:sourceRef>
-        <bpmn2:targetRef>_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembersmeetingMsgInputX</bpmn2:targetRef>
+        <bpmn2:sourceRef>membermeetingMsg</bpmn2:sourceRef>
+        <bpmn2:targetRef>_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembermeetingMsgInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
       <bpmn2:inputSet>
-        <bpmn2:dataInputRefs>_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembersmeetingMsgInputX</bpmn2:dataInputRefs>
+        <bpmn2:dataInputRefs>_08FC0B39-B0B3-489C-8B64-455861DFB93A_closedMembermeetingMsgInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="closedMembersmeetingMsg" messageRef="_6P_gQemZEDuaP5iZBhVIng"/>
+      <bpmn2:messageEventDefinition drools:msgref="closedMembersmeetingMsg" messageRef="_z9pGQPGNEDutt5M7xEBprQ"/>
     </bpmn2:intermediateThrowEvent>
     <bpmn2:intermediateThrowEvent id="_8BB74133-71C8-46CD-8761-682BA4AFB8E0" name="send invitation to member">
       <bpmn2:extensionElements>
@@ -124,20 +118,20 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_AA6EB1F1-7F91-4CD0-B406-4570BCB8694D</bpmn2:incoming>
       <bpmn2:outgoing>_6F95E0EC-9311-4B02-9075-9D1A2ABAD9F4</bpmn2:outgoing>
-      <bpmn2:dataInput id="_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembersmeetingMsgInputX" drools:dtype="String" itemSubjectRef="__8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembersmeetingMsgInputXItem" name="openMembersmeetingMsg"/>
+      <bpmn2:dataInput id="_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembermeetingMsgInputX" drools:dtype="String" itemSubjectRef="__8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembermeetingMsgInputXItem" name="openMembermeetingMsg"/>
       <bpmn2:dataInputAssociation>
-        <bpmn2:sourceRef>memebersmeetingMsg</bpmn2:sourceRef>
-        <bpmn2:targetRef>_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembersmeetingMsgInputX</bpmn2:targetRef>
+        <bpmn2:sourceRef>membermeetingMsg</bpmn2:sourceRef>
+        <bpmn2:targetRef>_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembermeetingMsgInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
       <bpmn2:inputSet>
-        <bpmn2:dataInputRefs>_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembersmeetingMsgInputX</bpmn2:dataInputRefs>
+        <bpmn2:dataInputRefs>_8BB74133-71C8-46CD-8761-682BA4AFB8E0_openMembermeetingMsgInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="openMembersmeetingMsg" messageRef="_6P_gQOmZEDuaP5iZBhVIng"/>
+      <bpmn2:messageEventDefinition drools:msgref="openMembersmeetingMsg" messageRef="_z9ofMPGNEDutt5M7xEBprQ"/>
     </bpmn2:intermediateThrowEvent>
-    <bpmn2:userTask id="_3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA" name="get user">
+    <bpmn2:userTask id="_3B5D11CB-D485-432A-BFD1-DC1AB42CD9DA" name="get member">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[get user]]></drools:metaValue>
+          <drools:metaValue><![CDATA[get member]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_CDEA347A-BFE1-4D23-B2C7-83FA32E4CAA4</bpmn2:incoming>
@@ -165,10 +159,10 @@
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
     </bpmn2:userTask>
-    <bpmn2:userTask id="_FCA01817-9394-4256-B6EB-C996C8A87F9A" name="get user">
+    <bpmn2:userTask id="_FCA01817-9394-4256-B6EB-C996C8A87F9A" name="get all user">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[get user]]></drools:metaValue>
+          <drools:metaValue><![CDATA[get all user]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_FF5CB7DD-7E8C-4BFA-AD74-BB735CC81DC2</bpmn2:incoming>
@@ -197,37 +191,38 @@
       </bpmn2:dataInputAssociation>
     </bpmn2:userTask>
     <bpmn2:exclusiveGateway id="_126E47C2-8FB5-4175-8BDB-4E2A869F7D1B" gatewayDirection="Diverging">
-      <bpmn2:incoming>_83FE1E1F-561B-4229-B25B-25143D7FC50A</bpmn2:incoming>
+      <bpmn2:incoming>_C6C67D0C-0ECD-479E-82EE-BCEA3660E6CA</bpmn2:incoming>
       <bpmn2:outgoing>_FF5CB7DD-7E8C-4BFA-AD74-BB735CC81DC2</bpmn2:outgoing>
       <bpmn2:outgoing>_CDEA347A-BFE1-4D23-B2C7-83FA32E4CAA4</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
-    <bpmn2:scriptTask id="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" name="get memebersmeeting data" scriptFormat="http://www.java.com/java">
+    <bpmn2:scriptTask id="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" name="set memebersmeeting data" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[get memebersmeeting data]]></drools:metaValue>
+          <drools:metaValue><![CDATA[set memebersmeeting data]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_59974497-E705-4E00-9E97-4EB18C78A303</bpmn2:incoming>
-      <bpmn2:outgoing>_83FE1E1F-561B-4229-B25B-25143D7FC50A</bpmn2:outgoing>
-      <bpmn2:script>membersmeetingType = membersmeeting.getType();</bpmn2:script>
+      <bpmn2:incoming>_77E85ADE-D51E-4625-A6B4-48FC75DFAB4A</bpmn2:incoming>
+      <bpmn2:outgoing>_353CDF2A-B884-4D84-9792-D89DC6D33913</bpmn2:outgoing>
+      <bpmn2:script>membermeeting.setIsClosed(isClosed);
+membermeeting.setAgenda(membermeetingMsg);</bpmn2:script>
     </bpmn2:scriptTask>
-    <bpmn2:serviceTask id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B" drools:serviceimplementation="Java" drools:serviceinterface="de.benevolo.rest.MembersmeetingApi" drools:serviceoperation="addMembersmeeting" name="Save member meeting" implementation="Java" operationRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceOperation">
+    <bpmn2:serviceTask id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B" drools:serviceimplementation="Java" drools:serviceinterface="de.benevolo.membermeetingmanagement.services.MembermeetingService" drools:serviceoperation="addMembermeeting" name="Save member meeting" implementation="Java" operationRef="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_ServiceOperation">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Save member meeting]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_85705C2C-FA2B-43FB-B909-75C5D2B697C0</bpmn2:incoming>
-      <bpmn2:outgoing>_59974497-E705-4E00-9E97-4EB18C78A303</bpmn2:outgoing>
+      <bpmn2:incoming>_353CDF2A-B884-4D84-9792-D89DC6D33913</bpmn2:incoming>
+      <bpmn2:outgoing>_C6C67D0C-0ECD-479E-82EE-BCEA3660E6CA</bpmn2:outgoing>
       <bpmn2:ioSpecification>
-        <bpmn2:dataInput id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membersmeetingInputX" drools:dtype="de.benevolo.entities.AssignMembersmeeting" itemSubjectRef="__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membersmeetingInputXItem" name="membersmeeting"/>
+        <bpmn2:dataInput id="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membermeetingInputX" drools:dtype="de.benevolo.membermeetingmanagement.entities.Membermeeting" itemSubjectRef="__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membermeetingInputXItem" name="membermeeting"/>
         <bpmn2:inputSet>
-          <bpmn2:dataInputRefs>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membersmeetingInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membermeetingInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
       </bpmn2:ioSpecification>
       <bpmn2:dataInputAssociation>
-        <bpmn2:sourceRef>membersmeeting</bpmn2:sourceRef>
-        <bpmn2:targetRef>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membersmeetingInputX</bpmn2:targetRef>
+        <bpmn2:sourceRef>membermeeting</bpmn2:sourceRef>
+        <bpmn2:targetRef>_530A37D8-FCC7-4C47-B2F3-E8D841E6441B_membermeetingInputX</bpmn2:targetRef>
       </bpmn2:dataInputAssociation>
     </bpmn2:serviceTask>
     <bpmn2:startEvent id="_E7FA0F25-9169-4373-A0A5-C61F58DA5D74" name="create membermeeting">
@@ -236,7 +231,7 @@
           <drools:metaValue><![CDATA[create membermeeting]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:outgoing>_85705C2C-FA2B-43FB-B909-75C5D2B697C0</bpmn2:outgoing>
+      <bpmn2:outgoing>_77E85ADE-D51E-4625-A6B4-48FC75DFAB4A</bpmn2:outgoing>
     </bpmn2:startEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
@@ -245,10 +240,10 @@
         <dc:Bounds height="56" width="56" x="146" y="192"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__530A37D8-FCC7-4C47-B2F3-E8D841E6441B" bpmnElement="_530A37D8-FCC7-4C47-B2F3-E8D841E6441B">
-        <dc:Bounds height="102" width="154" x="282" y="169"/>
+        <dc:Bounds height="102" width="154" x="510" y="169"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" bpmnElement="_4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF">
-        <dc:Bounds height="102" width="154" x="516" y="169"/>
+        <dc:Bounds height="102" width="154" x="279" y="169"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__126E47C2-8FB5-4175-8BDB-4E2A869F7D1B" bpmnElement="_126E47C2-8FB5-4175-8BDB-4E2A869F7D1B">
         <dc:Bounds height="56" width="56" x="750" y="192"/>
@@ -271,17 +266,17 @@
       <bpmndi:BPMNShape id="shape__0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F" bpmnElement="_0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F">
         <dc:Bounds height="56" width="56" x="1391" y="192"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="edge_shape__E7FA0F25-9169-4373-A0A5-C61F58DA5D74_to_shape__530A37D8-FCC7-4C47-B2F3-E8D841E6441B" bpmnElement="_85705C2C-FA2B-43FB-B909-75C5D2B697C0">
+      <bpmndi:BPMNEdge id="edge_shape__E7FA0F25-9169-4373-A0A5-C61F58DA5D74_to_shape__4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" bpmnElement="_77E85ADE-D51E-4625-A6B4-48FC75DFAB4A">
         <di:waypoint x="174" y="220"/>
-        <di:waypoint x="359" y="220"/>
+        <di:waypoint x="356" y="220"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_to_shape__4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF" bpmnElement="_59974497-E705-4E00-9E97-4EB18C78A303">
-        <di:waypoint x="359" y="220"/>
-        <di:waypoint x="593" y="220"/>
+      <bpmndi:BPMNEdge id="edge_shape__4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF_to_shape__530A37D8-FCC7-4C47-B2F3-E8D841E6441B" bpmnElement="_353CDF2A-B884-4D84-9792-D89DC6D33913">
+        <di:waypoint x="356" y="220"/>
+        <di:waypoint x="587" y="220"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__4125AF4B-3DAF-4CA8-B66E-25692ECDF7EF_to_shape__126E47C2-8FB5-4175-8BDB-4E2A869F7D1B" bpmnElement="_83FE1E1F-561B-4229-B25B-25143D7FC50A">
-        <di:waypoint x="670" y="220"/>
-        <di:waypoint x="750" y="220"/>
+      <bpmndi:BPMNEdge id="edge_shape__530A37D8-FCC7-4C47-B2F3-E8D841E6441B_to_shape__126E47C2-8FB5-4175-8BDB-4E2A869F7D1B" bpmnElement="_C6C67D0C-0ECD-479E-82EE-BCEA3660E6CA">
+        <di:waypoint x="587" y="220"/>
+        <di:waypoint x="778" y="220"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__126E47C2-8FB5-4175-8BDB-4E2A869F7D1B_to_shape__FCA01817-9394-4256-B6EB-C996C8A87F9A" bpmnElement="_FF5CB7DD-7E8C-4BFA-AD74-BB735CC81DC2">
         <di:waypoint x="778" y="192"/>
@@ -311,9 +306,9 @@
         <di:waypoint x="1303" y="345.00000000000006"/>
         <di:waypoint x="1303" y="248"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__F8324CD4-D399-4145-93C6-A07409CAFA41_to_shape__0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F" bpmnElement="_0E6C8D5A-5C93-4734-A7B7-BBE1EEDFEF75">
+      <bpmndi:BPMNEdge id="edge_shape__F8324CD4-D399-4145-93C6-A07409CAFA41_to_shape__0CD38AA2-B2BD-4A73-8C81-51DDF2E0277F" bpmnElement="_EADF5C6B-592B-4311-8B0F-F88D24CD7E28">
         <di:waypoint x="1303" y="220"/>
-        <di:waypoint x="1419" y="192"/>
+        <di:waypoint x="1419" y="220"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
@@ -412,7 +407,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_6P4ykOmZEDuaP5iZBhVIng</bpmn2:source>
-    <bpmn2:target>_6P4ykOmZEDuaP5iZBhVIng</bpmn2:target>
+    <bpmn2:source>_z9jmsPGNEDutt5M7xEBprQ</bpmn2:source>
+    <bpmn2:target>_z9jmsPGNEDutt5M7xEBprQ</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>

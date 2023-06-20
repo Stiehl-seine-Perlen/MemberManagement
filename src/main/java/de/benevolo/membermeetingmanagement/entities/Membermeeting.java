@@ -1,4 +1,4 @@
-package de.benevolo.entities;
+package de.benevolo.membermeetingmanagement.entities;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,10 +15,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.text.ParseException;
 
 @Entity
-@Table(name = "membersmeeting")
-public class AssignMembersmeeting {
+@Table(name = "membermeeting")
+public class Membermeeting {
 
     @Id
     @GeneratedValue
@@ -39,11 +42,18 @@ public class AssignMembersmeeting {
     private String location;
 
     /**
+     * from which assosiation
+     */
+    @JsonProperty("ownedByAssosiation")
+    @Column(name = "ownedByAssosiation")
+    private Long ownedByAssosiation;
+
+    /**
      * membersmeeting type
      */
-    @JsonProperty("type")
-    @Column(name = "type")
-    private MembersmeetingType type;
+    @JsonProperty("isClosed")
+    @Column(name = "isClosed")
+    private Boolean isClosed;
 
     /**
      * membersmeeting agenda
@@ -57,17 +67,25 @@ public class AssignMembersmeeting {
     @CreationTimestamp
     private LocalDateTime when;
 
-    protected AssignMembersmeeting() {}
+    protected Membermeeting() {}
     @JsonCreator
-    public AssignMembersmeeting(@JsonProperty(value = "date", required = true) Date date,
-                                @JsonProperty(value = "location", required = true) String location,
-                                @JsonProperty(value = "type", required = true) MembersmeetingType type,
+    public Membermeeting(@JsonProperty(value = "location", required = true) String location,
+                                @JsonProperty(value = "date", required = true) String date,
+                                @JsonProperty(value = "ownedByAssosiation", required = true) Long ownedByAssosiation,
+                                @JsonProperty(value = "isClosed", required = true) Boolean isClosed,
                                 @JsonProperty(value = "agenda", required = false) String agenda,
                                 @JsonProperty(value = "when", required = true) LocalDateTime when) {
-        this.date = date;
         this.location = location;
-        this.type = type;
+        this.isClosed = isClosed;
+        this.ownedByAssosiation = ownedByAssosiation;
         this.when = when;
+        DateFormat dateformat = new SimpleDateFormat(date);
+        try {
+            this.date = dateformat.parse(date);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Long getId() {
@@ -94,12 +112,20 @@ public class AssignMembersmeeting {
         this.location = location;
     }
 
-    public MembersmeetingType getType() {
-        return type;
+      public Long getOwnedByAssosiation() {
+        return ownedByAssosiation;
     }
 
-    public void setType(MembersmeetingType type) {
-        this.type = type;
+    public void setOwnedByAssosiation(Long ownedbyAssosiation) {
+        this.ownedByAssosiation = ownedbyAssosiation;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public void setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
     }
 
     public String getAgenda() {
