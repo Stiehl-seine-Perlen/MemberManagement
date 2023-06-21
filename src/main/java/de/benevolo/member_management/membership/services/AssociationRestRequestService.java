@@ -35,11 +35,17 @@ public class AssociationRestRequestService {
     public Association loadAssociationById(Long associationId) {
         Association association = associationRestClient.byId(associationId);
 
-        LOGGER.info("Association Name: " + association.getAssociationName() + "Association ID: " + associationId);
+        if(association == null){
+            LOGGER.info("ASSOCIATION is NULL");
+        }else{
+             LOGGER.info("Association Name: " + association.getAssociationName() + "Association ID: " + associationId);
+        }
+
+       
         
         return association;
     }
-    
+
     /* 
     public List<Membership> loadMembershipByAssociationId(Long associationId) {
 
