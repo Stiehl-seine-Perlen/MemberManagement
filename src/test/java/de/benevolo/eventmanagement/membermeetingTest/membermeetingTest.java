@@ -31,6 +31,7 @@ public class membermeetingTest {
                     "membermeeting": {
                     "date": "2023-08-15",
                     "location": "Verein",
+                    "isClosed": true,
                     "ownedByAssociationId": 5,
                     "when": "2022-03-10T12:15:50"
                 },
@@ -44,10 +45,11 @@ public class membermeetingTest {
                     "membermeeting": {
                     "date": "2023-10-09",
                     "location": "Gasthaus",
+                    "isClosed": false,
                     "ownedByAssociationId": 3,
                     "when": "2022-03-10T12:15:50"
-                },
-                "membermeetingMsg": "Begrüßung, Themenvorstellung, Besprechung, Fragen, Verabschiedung, Afterparty"
+                 },
+                    "membermeetingMsg": "Begrüßung, Themenvorstellung, Besprechung, Fragen, Verabschiedung, Afterparty"
                 }
                 				""";
 
@@ -57,7 +59,7 @@ public class membermeetingTest {
                     "date": "2023-10-09",
                     "location": "Verein",
                     "ownedByAssociationId": 3,
-                    "agenda": "Begrüßung, Themenvorstellung, Besprechung, Fragen, Verabschiedung"
+                    "agenda": "Begrüßung, Themenvorstellung, Besprechung, Fragen, Verabschiedung",
                     "when": "2022-03-10T12:15:50"
                   }
                 				""";
@@ -71,16 +73,16 @@ public class membermeetingTest {
     @Test
     public void shouldReturnEmptyList() {
         when()
-                .get("/listAllMembermeeting")
+                .get("/membermeeting/listAllMembermeeting")
                 .then()
                 .statusCode(200)
                 .body(is("[]"));
     }
 
     @Test
-    public void shouldPersistTwoEvents() {
+    public void shouldPersistTwoMembermeetings() {
 
-        persistTwoEvents();
+        persistTwoMembermeetings();
 
         //then
         List<Membermeeting> list = membermeetingRepositorie.listAll();
@@ -89,14 +91,14 @@ public class membermeetingTest {
     }
 
     @Test
-    public void ShouldUpdateEvent(){
+    public void ShouldUpdateMembermeeting(){
                 given()
                 .body(membermeeting1)
                 .contentType(ContentType.JSON)
                 .when()
-                .post("/CreateMembermeeting")
+                .post("/CreateMemberMeeting")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
                 given()
                 .body(membermeeting3)
@@ -107,21 +109,21 @@ public class membermeetingTest {
                 .statusCode(200);
     }
 
-    public void persistTwoEvents(){
+    public void persistTwoMembermeetings(){
                 given()
                 .body(membermeeting1)
                 .contentType(ContentType.JSON)
                 .when()
-                .post("/CreateMembermeeting")
+                .post("/CreateMemberMeeting")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
                 given()
                 .body(membermeeting2)
                 .contentType(ContentType.JSON)
                 .when()
-                .post("/CreateMembermeeting")
+                .post("/CreateMemberMeeting")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
             }
 }
