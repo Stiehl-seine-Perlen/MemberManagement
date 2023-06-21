@@ -91,7 +91,7 @@ public class membermeetingTest {
     }
 
     @Test
-    public void ShouldUpdateMembermeeting(){
+    public void ShouldUpdateEvent(){
                 given()
                 .body(membermeeting1)
                 .contentType(ContentType.JSON)
