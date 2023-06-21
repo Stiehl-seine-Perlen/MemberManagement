@@ -17,6 +17,7 @@ import de.benevolo.entities.association.Membership;
 @RegisterRestClient(configKey = "association")
 public interface AssociationRestClient {
 
+    /* 
     @GET
     @Path("{id}/")
     Association byId(@PathParam("id") Long id);
@@ -25,7 +26,9 @@ public interface AssociationRestClient {
     @GET
     @Path("{id}/members/")
     List<Membership> membersByAssociationId(@PathParam("id") Long id);
+    */
 
+    
     //Get all Assos
     @GET
     @Path("all/")

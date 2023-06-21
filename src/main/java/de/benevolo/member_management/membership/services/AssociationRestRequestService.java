@@ -21,6 +21,16 @@ public class AssociationRestRequestService {
     @RestClient
     AssociationRestClient associationRestClient;
 
+    // THIS
+    public List<Association> getAllEntries() {
+
+        List<Association> associations = associationRestClient.getAllEntries();
+        LOGGER.info("All Associations: \n" + associations);
+        
+        return associations;
+    }
+
+    /* 
     public Association loadAssociationById(Long associationId) {
         Association association = associationRestClient.byId(associationId);
 
@@ -38,5 +48,5 @@ public class AssociationRestRequestService {
         }
         return members;
     }
-
+    */
 }
