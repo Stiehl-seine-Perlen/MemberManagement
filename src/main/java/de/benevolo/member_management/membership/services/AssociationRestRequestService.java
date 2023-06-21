@@ -22,15 +22,16 @@ public class AssociationRestRequestService {
     AssociationRestClient associationRestClient;
 
     // THIS
+     /* 
     public List<Association> getAllEntries() {
 
         List<Association> associations = associationRestClient.getAllEntries();
         LOGGER.info("All Associations: \n" + associations);
         
         return associations;
-    }
+    } */
 
-    /* 
+    
     public Association loadAssociationById(Long associationId) {
         Association association = associationRestClient.byId(associationId);
 
@@ -38,7 +39,8 @@ public class AssociationRestRequestService {
         
         return association;
     }
-
+    
+    /* 
     public List<Membership> loadMembershipByAssociationId(Long associationId) {
 
         List<Membership> members = associationRestClient.membersByAssociationId(associationId);

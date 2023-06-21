@@ -26,8 +26,6 @@ public class CheckMembershipService {
     @Inject
     MembershipRepository membershipRepository;
 
-    @POST
-    @Consumes((MediaType.APPLICATION_JSON))
     @Transactional
     public Boolean checkStatus(PlatformUser user, Association association) {
         
