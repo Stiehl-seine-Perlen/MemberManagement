@@ -1,4 +1,4 @@
-package de.thi;
+package de.benevolo.member_management.membership.services;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import org.slf4j.LoggerFactory;
 import de.benevolo.entities.association.Association;
 import de.benevolo.entities.association.Membership;
 import de.benevolo.entities.user.PlatformUser;
-import de.thi.jpa.MembershipRepository;
+import de.benevolo.member_management.membership.repositories.MembershipRepository;
 
 @ApplicationScoped
 // Get process context of kogito application
-public class CheckMembership {
+public class CheckMembershipService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CheckMembership.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CheckMembershipService.class);
 
     @Inject
     MembershipRepository membershipRepository;
