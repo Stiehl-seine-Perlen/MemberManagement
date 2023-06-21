@@ -25,7 +25,7 @@ public class Membermeeting {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long membermeetingId;
 
     /**
      * membersmeeting date
@@ -44,9 +44,9 @@ public class Membermeeting {
     /**
      * from which assosiation
      */
-    @JsonProperty("ownedByAssosiation")
-    @Column(name = "ownedByAssosiation")
-    private Long ownedByAssosiation;
+    @JsonProperty("ownedByAssociationId")
+    @Column(name = "ownedByAssociationId")
+    private Long ownedByAssociationId;
 
     /**
      * membersmeeting type
@@ -71,13 +71,14 @@ public class Membermeeting {
     @JsonCreator
     public Membermeeting(@JsonProperty(value = "location", required = true) String location,
                                 @JsonProperty(value = "date", required = true) String date,
-                                @JsonProperty(value = "ownedByAssosiation", required = true) Long ownedByAssosiation,
+                                @JsonProperty(value = "ownedByAssociationId", required = true) Long ownedByAssociationId,
                                 @JsonProperty(value = "isClosed", required = true) Boolean isClosed,
                                 @JsonProperty(value = "agenda", required = false) String agenda,
                                 @JsonProperty(value = "when", required = true) LocalDateTime when) {
         this.location = location;
         this.isClosed = isClosed;
-        this.ownedByAssosiation = ownedByAssosiation;
+        this.ownedByAssociationId = ownedByAssociationId;
+        this.agenda = agenda;
         this.when = when;
         DateFormat dateformat = new SimpleDateFormat(date);
         try {
@@ -88,12 +89,12 @@ public class Membermeeting {
         }
     }
 
-    public Long getId() {
-        return id;
+    public Long getMembermeetingId() {
+        return membermeetingId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMembermeetingId(Long membermeetingId) {
+        this.membermeetingId = membermeetingId;
     }
 
     public Date getDate() {
@@ -112,12 +113,12 @@ public class Membermeeting {
         this.location = location;
     }
 
-      public Long getOwnedByAssosiation() {
-        return ownedByAssosiation;
+      public Long getOwnedByAssociationId() {
+        return ownedByAssociationId;
     }
 
-    public void setOwnedByAssosiation(Long ownedbyAssosiation) {
-        this.ownedByAssosiation = ownedbyAssosiation;
+    public void setOwnedByAssociationId(Long ownedbyAssosiation) {
+        this.ownedByAssociationId = ownedbyAssosiation;
     }
 
     public Boolean getIsClosed() {
