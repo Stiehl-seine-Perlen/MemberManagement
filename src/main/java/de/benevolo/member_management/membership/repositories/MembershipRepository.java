@@ -1,7 +1,6 @@
-package de.thi.jpa;
+package de.benevolo.member_management.membership.repositories;
 
 import de.benevolo.entities.association.Membership;
-
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
