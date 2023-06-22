@@ -17,6 +17,9 @@ import de.benevolo.entities.association.Membership;
 import de.benevolo.entities.user.PlatformUser;
 import de.benevolo.member_management.membership.repositories.MembershipRepository;
 
+import de.benevolo.member_management.membership.connectors.AssociationRestClient;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 @ApplicationScoped
 // Get process context of kogito application
 public class CheckMembershipService {
@@ -26,24 +29,34 @@ public class CheckMembershipService {
     @Inject
     MembershipRepository membershipRepository;
 
-    @Transactional
-    public Boolean checkStatus(PlatformUser user, Association association) {
+    @RestClient
+    AssociationRestClient associationRestClient;
+
+  
+    public Boolean checkStatus(PlatformUser user, List<Membership> members) {
         
         Boolean result = false;
 
         try {
              
-            LOGGER.info("Getting all Memberships with User -> " + user.getName() + " and Association -> " + association.getAssociationName());
+           // LOGGER.info("Getting all Memberships with User -> " + user.getName() + " and Association -> " + association.getAssociationName());
 
             // Code to select Membership with matching association id und user id
             // No matches -> empty list
 
-            List<Membership> userMembershipList = membershipRepository.list("FROM Membership WHERE associationrole_associationroleid IS " + association.getId() + " AND userid IS " + user.getId());
-            LOGGER.info("Generated List: " + userMembershipList);
+           // List<Membership> userMembershipList = membershipRepository.list("FROM Membership WHERE associationrole_associationroleid IS " + association.getId() + " AND userid IS " + user.getId());
+            LOGGER.info("Generated List: " + members);
 
-            if(userMembershipList.isEmpty() != true){
-                LOGGER.info("Generated List EMPTY?: " + userMembershipList.isEmpty());
-                result = true; // -> Already Member
+            if(members.isEmpty() == true){
+                LOGGER.info("Generated List EMPTY?: " + members.isEmpty());
+               
+            }else{
+                for (Membership member : members) {
+                    LOGGER.info("MeberId: " + member.getUserId());
+                    if(member.getUserId() == user.getId()){
+                        result = true;
+                    }
+                }
             }
            
         } catch (Exception e) {
@@ -53,4 +66,45 @@ public class CheckMembershipService {
         LOGGER.info("user: " + user.getName());
         return result;
     }
+
+
+    public Boolean checkStatus(PlatformUser user, Association association) {
+        
+        Boolean result = false;
+
+        try {
+             
+           // LOGGER.info("Getting all Memberships with User -> " + user.getName() + " and Association -> " + association.getAssociationName());
+
+            // Code to select Membership with matching association id und user id
+            // No matches -> empty list
+
+           // List<Membership> userMembershipList = membershipRepository.list("FROM Membership WHERE associationrole_associationroleid IS " + association.getId() + " AND userid IS " + user.getId());
+           List<Membership> members = associationRestClient.membersByAssociationId(association.getId()); 
+
+           LOGGER.info("Username: " + user.getName());
+           LOGGER.info("UserId: " + user.getId());
+           
+           LOGGER.info("Generated List: " + members);
+
+            if(members.isEmpty() == true){
+                LOGGER.info("Generated List EMPTY?: " + members.isEmpty());
+               
+            }else{
+                for (Membership member : members) {
+                    LOGGER.info("MeberId: " + member.getUserId());
+                    if(member.getUserId() == user.getId()){
+                        result = true;
+                    }
+                }
+            }
+           
+        } catch (Exception e) {
+            LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
+        }; 
+
+        LOGGER.info("user: " + user.getName());
+        return result;
+    }
+
 }

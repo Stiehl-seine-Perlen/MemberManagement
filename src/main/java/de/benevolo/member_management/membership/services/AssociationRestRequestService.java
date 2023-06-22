@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import de.benevolo.entities.association.Association;
+import de.benevolo.entities.user.PlatformUser;
 import de.benevolo.entities.association.Membership;
 import de.benevolo.member_management.membership.connectors.AssociationRestClient;
 
@@ -21,18 +22,11 @@ public class AssociationRestRequestService {
     @RestClient
     AssociationRestClient associationRestClient;
 
-    // THIS
-     /* 
-    public List<Association> getAllEntries() {
-
-        List<Association> associations = associationRestClient.getAllEntries();
-        LOGGER.info("All Associations: \n" + associations);
-        
-        return associations;
-    } */
-
-    
+     
     public Association loadAssociationById(Long associationId) {
+        
+        LOGGER.info("ASSOCIATION: " + associationId);
+
         Association association = associationRestClient.byId(associationId);
 
         if(association == null){
@@ -40,21 +34,20 @@ public class AssociationRestRequestService {
         }else{
              LOGGER.info("Association Name: " + association.getAssociationName() + "Association ID: " + associationId);
         }
-
-       
         
         return association;
     }
 
-    /* 
+    //get all memberships of association
     public List<Membership> loadMembershipByAssociationId(Long associationId) {
+        
+        LOGGER.info("in loadmembershipbyass: " + associationId);
 
         List<Membership> members = associationRestClient.membersByAssociationId(associationId);
         for (Membership member : members) {
-           
-            LOGGER.info("Member ID: " + member.getUserId());
+            LOGGER.info("MeberId: " + member.getUserId());
         }
         return members;
-    }
-    */
+    }   
+    
 }

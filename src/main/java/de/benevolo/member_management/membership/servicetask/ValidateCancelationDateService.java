@@ -1,4 +1,4 @@
-package de.benevolo.member_management.membership.services;
+package de.benevolo.member_management.membership.servicetask;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
