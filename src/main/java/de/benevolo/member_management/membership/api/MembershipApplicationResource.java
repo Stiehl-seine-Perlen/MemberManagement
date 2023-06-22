@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 
 
 import de.benevolo.entities.association.Membership;
-import de.benevolo.member_management.membership.services.AddMembershipService;
 import de.benevolo.member_management.membership.services.CheckMembershipService;
 
 @Path("/membership/")
