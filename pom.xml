@@ -114,10 +114,10 @@
         <!-- Eigenes Repository -->
         <dependency>
             <groupId>de.benevolo</groupId>
-            <artifactId>entities-repo</artifactId>
-            <version>1.5.0-SNAPSHOT</version>
+            <artifactId>mail-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        
         <!-- test -->
         <dependency>
             <groupId>io.quarkus</groupId>
