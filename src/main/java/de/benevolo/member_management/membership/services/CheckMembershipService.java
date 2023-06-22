@@ -29,6 +29,7 @@ public class CheckMembershipService {
     @Inject
     MembershipRepository membershipRepository;
 
+    @Inject
     @RestClient
     AssociationRestClient associationRestClient;
 
@@ -103,6 +104,7 @@ public class CheckMembershipService {
             LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
         }; 
 
+        
         LOGGER.info("user: " + user.getName());
         return result;
     }

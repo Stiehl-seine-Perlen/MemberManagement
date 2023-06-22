@@ -1,6 +1,7 @@
 package de.benevolo.member_management.membership.services;
 
 import java.util.List;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ public class AssociationRestRequestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AssociationRestRequestService.class);
 
+    @Inject
     @RestClient
     AssociationRestClient associationRestClient;
 
