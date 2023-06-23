@@ -7,6 +7,9 @@ import de.benevolo.email.Email;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class SendMeetingInvitations {
 
     private List<String> memberList;
@@ -18,18 +21,23 @@ public class SendMeetingInvitations {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Willkommens-E-Mail</title>
+<title>Anstehende Mitgliederversammlung</title>
 </head>
 <body>
 <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-<h1>Willkommen bei Benevolo!</h1>
-<p>Hallo <b> $username</b>!</p>
-<p>Herzlich willkommen bei Benevolo! Wir freuen uns, dass du dich für unseren Service entschieden hast, um Vereine zu managen.</p>
-<p>Als Mitglied unserer Plattform hast du Zugriff auf eine Vielzahl von Funktionen, die dir dabei helfen, den Verein effizient zu organisieren, Kommunikationen zu verwalten und Mitglieder einzubinden.</p>
-<p>Unser Team steht dir jederzeit zur Verfügung, um dir bei Fragen oder Problemen behilflich zu sein. Zögere nicht, uns zu kontaktieren.</p>
-<p>Wir wünschen dir viel Erfolg und Spaß bei der Nutzung von Benevolo!</p>
+<h1>Einladung zur Mitgliederversammlung!</h1>
+<p>Liebes Vereinsmitglied,</p>
+<p>hiermit laden wir dich herzlich zur Mitgliederversammlung des [Vereinsname] ein.</p>
+<p>Deine Teilnahme und Mitarbeit sind für uns von großer Bedeutung, um gemeinsam die Zukunft unseres Vereins zu gestalten. </p>
+<p>Hier sind die Details zur Versammlung:</p>
+<p>Datum: [Datum der Versammlung]</p>
+<p>Uhrzeit: [Uhrzeit der Versammlung]</p>
+<p>Ort: [Veranstaltungsort]</p>
+<p>Tagesordnung:</p>
+<p>[Agenda]</p>
+<p>Wir freuen uns auf deine Teilnahme und dein Engagement bei der Mitgliederversammlung. Gemeinsam können wir unseren Verein weiter voranbringen und unsere Ziele erreichen. </p>
 <p>Freundliche Grüße,</p>
-<p>Das Benevolo-Team</p>
+<p>[Vorstand]</p>
 </div>
 </body>
 </html>
