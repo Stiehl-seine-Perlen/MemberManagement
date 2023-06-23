@@ -30,19 +30,8 @@ public interface AssociationRestClient {
     @Path("{id}/members/")
     List<Membership> membersByAssociationId(@PathParam("id") Long id);
 
-
-
-
-    /* 
-    //Get all Assos
-    @GET
-    @Path("all/")
-    List<Association> getAllEntries();
-
     @POST
-    @Path("add/")
-    Association add(Membership membership);
-    */
-
+    @Path("addMembership/")
+    Association addMembership(Membership membership);
 
 }

@@ -18,14 +18,24 @@ import de.benevolo.entities.association.Membership;
 import de.benevolo.entities.user.PlatformUser;
 import de.benevolo.member_management.membership.repositories.MembershipRepository;
 
+import de.benevolo.member_management.membership.connectors.AssociationRestClient;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 //import de.benevolo.association.repositories.AssociationRepository;
 @ApplicationScoped
 public class MembershipService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MembershipService.class);
 
+    /* 
     @Inject
     MembershipRepository membershipRepository;
+    */
+
+    @Inject
+    @RestClient
+    AssociationRestClient associationRestClient;
+
 
     @Transactional
     public Boolean persistMembership(Association association, PlatformUser user){
@@ -36,7 +46,8 @@ public class MembershipService {
         
        
         try {
-            membershipRepository.persist(membership);
+            //membershipRepository.persist(membership);
+            associationRestClient.addMembership(membership);
             LOGGER.info("PERSISTET!" + membership.toString());
            return true;
         } catch (Exception e) {

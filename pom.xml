@@ -120,7 +120,7 @@
     <dependency>
       <groupId>de.benevolo</groupId>
       <artifactId>entities-repo</artifactId>
-      <version>1.6.0-SNAPSHOT</version>
+      <version>1.7.6-SNAPSHOT</version>
     </dependency>
 
     <!-- EMAIL -->
