@@ -72,7 +72,13 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
         </dependency>
-
+       
+        <!-- Eigenes Repository -->
+        <dependency>
+            <groupId>de.benevolo</groupId>
+            <artifactId>entities-repo</artifactId>
+            <version>1.7.7-SNAPSHOT</version>
+        </dependency>
         <!-- kogito -->
         <dependency>
             <groupId>org.kie.kogito</groupId>
@@ -119,12 +125,7 @@
             <groupId>org.kie.kogito</groupId>
             <artifactId>kogito-addons-quarkus-data-index-infinispan</artifactId>
         </dependency>
-        <!-- Eigenes Repository -->
-        <dependency>
-            <groupId>de.benevolo</groupId>
-            <artifactId>entities-repo</artifactId>
-            <version>1.7.7-SNAPSHOT</version>
-        </dependency>
+        
         <!-- comment out keycloak for now 
         <dependency>
             <groupId>io.quarkus</groupId>
