@@ -1,4 +1,4 @@
-package de.benevolo.eventmanagement.membermeetingTest;
+package de.benevolo.membermeetingTests.membermeetingTest;
 
 import de.benevolo.membermeetingmanagement.entities.Membermeeting;
 import de.benevolo.membermeetingmanagement.repositories.MembermeetingRepositorie;
