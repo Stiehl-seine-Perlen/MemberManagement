@@ -1,6 +1,6 @@
 package de.benevolo.membermanagementTests.membermeetingTest;
 
-import de.benevolo.membermeetingmanagement.entities.Membermeeting;
+import de.benevolo.entities.events.Membermeeting;
 import de.benevolo.membermeetingmanagement.repositories.MembermeetingRepositorie;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;

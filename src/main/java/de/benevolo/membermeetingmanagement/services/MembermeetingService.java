@@ -1,6 +1,6 @@
 package de.benevolo.membermeetingmanagement.services;
 
-import de.benevolo.membermeetingmanagement.entities.Membermeeting;
+import de.benevolo.entities.events.Membermeeting;
 import de.benevolo.membermeetingmanagement.repositories.MembermeetingRepositorie;
 
 import javax.inject.Inject;
