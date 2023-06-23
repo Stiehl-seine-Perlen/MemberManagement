@@ -1,6 +1,6 @@
 package de.benevolo.membermeetingmanagement.services;
 
-// import de.thi.associationManagement.AssociationResource;
+import de.benevolo.membermeetingmanagement.entities.Membermeeting;
 
 import de.benevolo.MailService;
 import de.benevolo.email.Email;
@@ -12,36 +12,36 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class SendMeetingInvitations {
 
+    private Membermeeting membermeeting;
     private List<String> memberList;
     
     private MailService mailService = MailService.getInstance();
 
-    private String html = """
-            <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Anstehende Mitgliederversammlung</title>
-</head>
-<body>
-<div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-<h1>Einladung zur Mitgliederversammlung!</h1>
-<p>Liebes Vereinsmitglied,</p>
-<p>hiermit laden wir dich herzlich zur Mitgliederversammlung des [Vereinsname] ein.</p>
-<p>Deine Teilnahme und Mitarbeit sind für uns von großer Bedeutung, um gemeinsam die Zukunft unseres Vereins zu gestalten. </p>
-<p>Hier sind die Details zur Versammlung:</p>
-<p>Datum: [Datum der Versammlung]</p>
-<p>Uhrzeit: [Uhrzeit der Versammlung]</p>
-<p>Ort: [Veranstaltungsort]</p>
-<p>Tagesordnung:</p>
-<p>[Agenda]</p>
-<p>Wir freuen uns auf deine Teilnahme und dein Engagement bei der Mitgliederversammlung. Gemeinsam können wir unseren Verein weiter voranbringen und unsere Ziele erreichen. </p>
-<p>Freundliche Grüße,</p>
-<p>[Vorstand]</p>
-</div>
-</body>
-</html>
-            """;
+    private String html = String.format("""
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Anstehende Mitgliederversammlung</title>
+            </head>
+            <body>
+                <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h1>Einladung zur Mitgliederversammlung!</h1>
+                <p>Liebes Vereinsmitglied,</p>
+                <p>hiermit laden wir dich herzlich zur Mitgliederversammlung ein.</p>
+                <p>Deine Teilnahme und Mitarbeit sind für uns von großer Bedeutung, um gemeinsam die Zukunft unseres Vereins zu gestalten. </p>
+                <p>Hier sind die Details zur Versammlung:</p>
+                <p>Datum: %d</p>
+                <p>Ort: %s</p>
+                <p>Tagesordnung:</p>
+                <p>%s</p>
+                <p>Wir freuen uns auf deine Teilnahme und dein Engagement bei der Mitgliederversammlung. Gemeinsam können wir unseren Verein weiter voranbringen und unsere Ziele erreichen. </p>
+                <p>Freundliche Grüße,</p>
+                <p>Ihr Vorstand</p>
+                </div>
+            </body>
+        </html>
+        """, membermeeting.getDate(), membermeeting.getLocation(), membermeeting.getAgenda());
 
     public void sentEmail() {
 

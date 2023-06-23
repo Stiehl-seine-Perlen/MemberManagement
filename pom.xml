@@ -110,7 +110,6 @@
             <groupId>org.kie.kogito</groupId>
             <artifactId>kogito-addons-quarkus-data-index-infinispan</artifactId>
         </dependency>
-
         <!-- Eigenes Repository -->
         <dependency>
             <groupId>de.benevolo</groupId>

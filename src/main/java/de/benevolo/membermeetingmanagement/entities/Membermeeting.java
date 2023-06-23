@@ -67,7 +67,7 @@ public class Membermeeting {
     @CreationTimestamp
     private LocalDateTime when;
 
-    protected Membermeeting() {}
+    public Membermeeting() {}
     @JsonCreator
     public Membermeeting(@JsonProperty(value = "location", required = true) String location,
                                 @JsonProperty(value = "date", required = true) String date,
