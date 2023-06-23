@@ -40,6 +40,6 @@ jobs:
         run: |
           docker push docker.benevolo.de/stiehl-seine-perlen/crowd-control:dev
 
-     # - name: "Deploy new image"
-      #  run: |
-      #    curl -X POST https://portainer.benevolo.de/api/webhooks/488f8b04-2bf7-44f2-8d40-1b687e4e63e6
+      - name: "Deploy new image"
+        run: |
+          curl -X POST https://portainer.benevolo.de/api/webhooks/f39aca79-0ae0-4ec9-bf33-484cf6b57fc1
