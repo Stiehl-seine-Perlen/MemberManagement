@@ -45,7 +45,7 @@ public class SendMeetingInvitations {
 
     public void sentEmail() {
 
-        Email email = new Email("chh3020@thi.de","Christian","Testmail",html,"jav4296@thi.de","Jan");
+        Email email = new Email("chh3020@thi.de","Christian","Einladung zur Mitgliederversammlung",html,"jav4296@thi.de","Jan");
 
         try {
         mailService.sendMessage(email);
