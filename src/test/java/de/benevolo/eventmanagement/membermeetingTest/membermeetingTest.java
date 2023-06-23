@@ -30,6 +30,7 @@ public class membermeetingTest {
                     "isClosed": true,
                     "membermeeting": {
                     "date": "2023-08-15",
+                    "time": "14:00 Uhr",
                     "location": "Verein",
                     "isClosed": true,
                     "ownedByAssociationId": 5,
@@ -44,6 +45,7 @@ public class membermeetingTest {
                     "isClosed": false,
                     "membermeeting": {
                     "date": "2023-10-09",
+                    "time": "15:00 Uhr",
                     "location": "Gasthaus",
                     "isClosed": false,
                     "ownedByAssociationId": 3,
@@ -57,6 +59,7 @@ public class membermeetingTest {
                   {       
                     "isClosed": true,
                     "date": "2023-10-09",
+                    "time" : "16:00 Uhr",
                     "location": "Verein",
                     "ownedByAssociationId": 3,
                     "agenda": "Begrüßung, Themenvorstellung, Besprechung, Fragen, Verabschiedung",

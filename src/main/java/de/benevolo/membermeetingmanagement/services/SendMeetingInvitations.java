@@ -34,8 +34,8 @@ public class SendMeetingInvitations {
                 <p>Deine Teilnahme und Mitarbeit sind für uns von großer Bedeutung, um gemeinsam die Zukunft unseres Vereins zu gestalten. </p>
                 <p>Hier sind die Details zur Versammlung:</p>
                 <p>Datum: %s</p>
-                <p>Ort: %s</p>
                 <p>Uhrzeit: %s</p>
+                <p>Ort: %s</p>
                 <p>Tagesordnung:</p>
                 <p>%s</p>
                 <p>Wir freuen uns auf deine Teilnahme und dein Engagement bei der Mitgliederversammlung. Gemeinsam können wir unseren Verein weiter voranbringen und unsere Ziele erreichen. </p>
