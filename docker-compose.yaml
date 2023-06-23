@@ -39,3 +39,5 @@ networks:
     external: true
   crowd-control:
     external: true
+  nginx-proxy-manager:
+    external: true
