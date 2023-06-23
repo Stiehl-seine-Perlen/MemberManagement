@@ -5,19 +5,21 @@ import de.benevolo.membermeetingmanagement.entities.Membermeeting;
 import de.benevolo.MailService;
 import de.benevolo.email.Email;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
 
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class SendMeetingInvitations {
-
-    private Membermeeting membermeeting;
-    private List<String> memberList;
     
     private MailService mailService = MailService.getInstance();
+    
+    public void sentEmail(Membermeeting membermeeting) {
 
-    private String html = String.format("""
+        SimpleDateFormat DateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String date = DateFormat.format(membermeeting.getDate());
+
+        String html = String.format("""
         <!DOCTYPE html>
         <html>
             <head>
@@ -31,8 +33,9 @@ public class SendMeetingInvitations {
                 <p>hiermit laden wir dich herzlich zur Mitgliederversammlung ein.</p>
                 <p>Deine Teilnahme und Mitarbeit sind für uns von großer Bedeutung, um gemeinsam die Zukunft unseres Vereins zu gestalten. </p>
                 <p>Hier sind die Details zur Versammlung:</p>
-                <p>Datum: %d</p>
+                <p>Datum: %s</p>
                 <p>Ort: %s</p>
+                <p>Uhrzeit: %s</p>
                 <p>Tagesordnung:</p>
                 <p>%s</p>
                 <p>Wir freuen uns auf deine Teilnahme und dein Engagement bei der Mitgliederversammlung. Gemeinsam können wir unseren Verein weiter voranbringen und unsere Ziele erreichen. </p>
@@ -41,9 +44,7 @@ public class SendMeetingInvitations {
                 </div>
             </body>
         </html>
-        """, membermeeting.getDate(), membermeeting.getLocation(), membermeeting.getAgenda());
-
-    public void sentEmail() {
+        """, date, membermeeting.getTime(), membermeeting.getLocation(), membermeeting.getAgenda());
 
         Email email = new Email("chh3020@thi.de","Christian","Einladung zur Mitgliederversammlung",html,"jav4296@thi.de","Jan");
 
@@ -53,17 +54,5 @@ public class SendMeetingInvitations {
         catch (Exception e) {
 
         }
-    }
-
-
-
-
-
-    public List<String> getMemberList() {
-        return memberList;
-    }
-
-    public void setMemberList(List<String> memberList) {
-        this.memberList = memberList;
     }
 }

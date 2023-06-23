@@ -35,6 +35,13 @@ public class Membermeeting {
     private Date date;
 
     /**
+     * membermeeting time
+     */
+    @JsonProperty("time")
+    @Column(name = "time")
+    private String time;
+
+    /**
      * membersmeeting location
      */
     @JsonProperty("location")
@@ -70,7 +77,8 @@ public class Membermeeting {
     public Membermeeting() {}
     @JsonCreator
     public Membermeeting(@JsonProperty(value = "location", required = true) String location,
-                                @JsonProperty(value = "date", required = true) String date,
+                                @JsonProperty(value = "date", required = true) Date date,
+                                @JsonProperty(value = "time", required = true) String time,
                                 @JsonProperty(value = "ownedByAssociationId", required = true) Long ownedByAssociationId,
                                 @JsonProperty(value = "isClosed", required = true) Boolean isClosed,
                                 @JsonProperty(value = "agenda", required = false) String agenda,
@@ -78,15 +86,10 @@ public class Membermeeting {
         this.location = location;
         this.isClosed = isClosed;
         this.ownedByAssociationId = ownedByAssociationId;
+        this.date = date;
+        this.time = time;
         this.agenda = agenda;
         this.when = when;
-        DateFormat dateformat = new SimpleDateFormat(date);
-        try {
-            this.date = dateformat.parse(date);
-        }
-        catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     public Long getMembermeetingId() {
@@ -103,6 +106,14 @@ public class Membermeeting {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getLocation() {
