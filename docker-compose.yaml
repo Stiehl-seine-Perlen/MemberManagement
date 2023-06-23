@@ -16,6 +16,8 @@ services:
       QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres-dev:5432/member
       QUARKUS_HIBERNATE_ORM_DATABASE_GENERATION: drop-and-create
       QUARKUS_HTTP_CORS_ORIGINS: "https://dev.benevolo.de" ## allow frontend as origin
+      MJ_APIKEY_PUBLIC: ${MJ_APIKEY_PUBLIC}
+      MJ_APIKEY_PRIVATE: ${MJ_APIKEY_PRIVATE}
 
     networks:
       - crowd-control
