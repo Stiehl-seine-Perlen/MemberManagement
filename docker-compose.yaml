@@ -20,6 +20,7 @@ services:
     networks:
       - crowd-control
       - kafka
+      - nginx-proxy-manager
 
   postgres-dev:
     image: postgres:latest
