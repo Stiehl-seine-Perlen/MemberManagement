@@ -1,0 +1,45 @@
+name: Build, test and deploy new docker image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-deploy-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: "Login to self hosted docker image registry"
+        uses: docker/login-action@v2
+        with:
+          registry: docker.benevolo.de
+          username: docker_admin
+          password: ${{secrets.DOCKER_REGISTRY_ACCESS_PASSWORD}}
+
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17.0
+          distribution: oracle
+          cache: "maven"
+
+      - name: "Build the maven package"
+        run: ACCESS_TOKEN=${{secrets.GH_REGISTRY_ACCESS_PASSWORD}} DOCKER_REGISTRY_PASSWORD=${{secrets.DOCKER_REGISTRY_ACCESS_PASSWORD}} FORMREC_AZUREKEY=${{secrets.FORMREC_AZUREKEY}} mvn -X -s $GITHUB_WORKSPACE/.github/maven/settings.xml -B package --file pom.xml
+
+      - name: "Build and test crowd-control image"
+        run: |
+          docker build -f src/main/docker/Dockerfile.jvm \
+          --tag docker.benevolo.de/stiehl-seine-perlen/crowd-control:dev .
+
+      - name: "Push image to self hosted docker image registry"
+        run: |
+          docker push docker.benevolo.de/stiehl-seine-perlen/crowd-control:dev
+
+      - name: "Deploy new image"
+        run: |
+          curl -X POST https://portainer.benevolo.de/api/webhooks/f39aca79-0ae0-4ec9-bf33-484cf6b57fc1
