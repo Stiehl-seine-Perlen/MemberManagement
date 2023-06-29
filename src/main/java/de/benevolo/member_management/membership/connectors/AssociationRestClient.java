@@ -30,5 +30,9 @@ public interface AssociationRestClient {
     @POST
     @Path("addMembership/")
     Association addMembership(Membership membership);
+    
+    @POST
+    @Path("memberships/")
+    List<Membership> getMembershipsByAssociationId(Long id);
 
 }
