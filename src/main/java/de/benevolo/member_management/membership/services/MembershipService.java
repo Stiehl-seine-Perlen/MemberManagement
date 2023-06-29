@@ -1,5 +1,6 @@
 package de.benevolo.member_management.membership.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -30,18 +31,18 @@ public class MembershipService {
     @Transactional
     public Boolean persistMembership(Association association, PlatformUser user) {
 
-        // Mocking a little bit
-        Membership membership = new Membership(null, user.getId(), new AssociationRole());
+        // Mocking a little bit, because DB has no entrys
+        AssociationRole role = new AssociationRole("Mitglied", "Vordefiniertes Mitglied", false, false, false);
+        
+        Membership membership = new Membership(null, user.getId(), role);
         membership.setMembershipId(null);
         membership.getAssociationRole().setAssociationRoleId(null);
 
         try {
-
             associationRestClient.addMembership(membership);
             LOGGER.info("PERSISTET -->  " + membership.toString());
             return true;
         } catch (Exception e) {
-
             LOGGER.error("EXCEPTION -->  " + e);
             return false;
         }
@@ -53,19 +54,21 @@ public class MembershipService {
         Boolean result = false;
 
         try {
-
-            List<Membership> members = associationRestClient.membersByAssociationId(association.getId());
+            //get all "members / memberships" of association 
+            List<Membership> membershipsList = associationRestClient.getMembershipsByAssociationId(association.getId());
 
             LOGGER.info("Username: " + user.getName());
+            LOGGER.info("Assoname: " + association.getAssociationName());
             LOGGER.info("UserId: " + user.getId());
-            LOGGER.info("Generated List: " + members);
+            LOGGER.info("Generated List: " + membershipsList);
 
-            if (members.isEmpty() == true) {
-                LOGGER.info("Generated List EMPTY?: " + members.isEmpty());
+            //Check if user is already member of association
+            if (membershipsList.isEmpty() == true) {
+                LOGGER.info("Generated List EMPTY?: " + membershipsList.isEmpty());
             } else {
-                for (Membership member : members) {
-                    LOGGER.info("MeberId: " + member.getUserId());
-                    if (member.getUserId() == user.getId()) {
+                for (Membership membership : membershipsList) {
+                    LOGGER.info("MeberId: " + membership.getUserId());
+                    if (membership.getUserId() == user.getId()) {
                         result = true;
                     }
                 }

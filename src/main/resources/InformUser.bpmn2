@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_oPTBUPNlEDu0PNUwUhoy8A" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_jGSBMPjYEDuFcbqeWaEcaw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_informTextItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_acknowledgeItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="__AE354ED0-5F2B-4CE8-A649-F478A7337067_informTextInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="informUserType" structureRef="String"/>
   <bpmn2:itemDefinition id="__E1C7CA81-C832-41CF-8EBF-C550A057EADD_acknowledgeUserOutputXItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="acknowledgeUserType" structureRef="Boolean"/>
-  <bpmn2:itemDefinition id="_48370509-3786-49F8-9B7C-E4D04A487574" structureRef=""/>
-  <bpmn2:itemDefinition id="_627E1B93-40E8-47F9-971A-F86C0197BECF" structureRef=""/>
-  <bpmn2:message id="_oPToYPNlEDu0PNUwUhoy8A" itemRef="informUserType" name="informUser"/>
-  <bpmn2:message id="_oPUPcPNlEDu0PNUwUhoy8A" itemRef="acknowledgeUserType" name="acknowledgeUser"/>
-  <bpmn2:collaboration id="_F6A16253-D622-4EF8-9494-10E850A065C4" name="Default Collaboration">
-    <bpmn2:participant id="_B7267360-5CCD-464E-8F3A-4C6CED83D512" name="Pool Participant" processRef="InformUser"/>
+  <bpmn2:itemDefinition id="_FE473AC0-77FD-4ECE-8BEF-D80B32EE1335" structureRef=""/>
+  <bpmn2:itemDefinition id="_E3E44F19-EB93-4299-BEC5-AC8A3EFBA3C2" structureRef=""/>
+  <bpmn2:message id="_jGSoQPjYEDuFcbqeWaEcaw" itemRef="informUserType" name="informUser"/>
+  <bpmn2:message id="_jGSoQfjYEDuFcbqeWaEcaw" itemRef="acknowledgeUserType" name="acknowledgeUser"/>
+  <bpmn2:collaboration id="_9F326AA9-7B30-4952-9378-DF5B5256DE97" name="Default Collaboration">
+    <bpmn2:participant id="_D49A9188-A46D-43FD-A080-9989B49E4888" name="Pool Participant" processRef="InformUser"/>
   </bpmn2:collaboration>
   <bpmn2:process id="InformUser" drools:packageName="de.benevolo" drools:version="1.0" drools:adHoc="false" name="InformUser" isExecutable="true" processType="Public">
     <bpmn2:property id="informText" itemSubjectRef="_informTextItem" name="informText">
@@ -45,6 +45,14 @@
     <bpmn2:sequenceFlow id="_1017C24C-45CD-41B6-864D-919BB1686A67" sourceRef="_BD70C00A-C333-4905-95B4-F0826D9BC48E" targetRef="_E1C7CA81-C832-41CF-8EBF-C550A057EADD"/>
     <bpmn2:sequenceFlow id="_9F7402C3-81EF-4012-8777-15B5504A3B79" sourceRef="_AE354ED0-5F2B-4CE8-A649-F478A7337067" targetRef="_BD70C00A-C333-4905-95B4-F0826D9BC48E"/>
     <bpmn2:sequenceFlow id="_29CCA4F9-A127-4DB6-8DE9-36EDFFC8CE93" sourceRef="_214CB051-BEEF-415A-8372-D4C12BA449BF" targetRef="_AE354ED0-5F2B-4CE8-A649-F478A7337067"/>
+    <bpmn2:startEvent id="_214CB051-BEEF-415A-8372-D4C12BA449BF" name="Inform User About Change">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Inform User About Change]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_29CCA4F9-A127-4DB6-8DE9-36EDFFC8CE93</bpmn2:outgoing>
+    </bpmn2:startEvent>
     <bpmn2:intermediateCatchEvent id="_6762DAAB-858E-490B-AA3A-B77B8A903ECD" name="20 Seconds">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -67,10 +75,10 @@
       <bpmn2:outgoing>_1017C24C-45CD-41B6-864D-919BB1686A67</bpmn2:outgoing>
       <bpmn2:outgoing>_DC5C36A2-0924-4109-902F-EEBC1D23DB09</bpmn2:outgoing>
     </bpmn2:eventBasedGateway>
-    <bpmn2:endEvent id="_B5934734-25AC-496D-A3C8-0A558E86ACAB" name="Closing Inform of Change">
+    <bpmn2:endEvent id="_B5934734-25AC-496D-A3C8-0A558E86ACAB" name="User has been informed">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Closing Inform of Change]]></drools:metaValue>
+          <drools:metaValue><![CDATA[User has been informed]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_602BE627-F34E-469A-A615-617604819768</bpmn2:incoming>
@@ -91,7 +99,7 @@
       <bpmn2:outputSet>
         <bpmn2:dataOutputRefs>_E1C7CA81-C832-41CF-8EBF-C550A057EADD_acknowledgeUserOutputX</bpmn2:dataOutputRefs>
       </bpmn2:outputSet>
-      <bpmn2:messageEventDefinition drools:msgref="acknowledgeUser" messageRef="_oPUPcPNlEDu0PNUwUhoy8A"/>
+      <bpmn2:messageEventDefinition drools:msgref="acknowledgeUser" messageRef="_jGSoQfjYEDuFcbqeWaEcaw"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:intermediateThrowEvent id="_AE354ED0-5F2B-4CE8-A649-F478A7337067" name="Send Information">
       <bpmn2:extensionElements>
@@ -109,22 +117,11 @@
       <bpmn2:inputSet>
         <bpmn2:dataInputRefs>_AE354ED0-5F2B-4CE8-A649-F478A7337067_informTextInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="informUser" messageRef="_oPToYPNlEDu0PNUwUhoy8A"/>
+      <bpmn2:messageEventDefinition drools:msgref="informUser" messageRef="_jGSoQPjYEDuFcbqeWaEcaw"/>
     </bpmn2:intermediateThrowEvent>
-    <bpmn2:startEvent id="_214CB051-BEEF-415A-8372-D4C12BA449BF" name="Inform User About Change">
-      <bpmn2:extensionElements>
-        <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Inform User About Change]]></drools:metaValue>
-        </drools:metaData>
-      </bpmn2:extensionElements>
-      <bpmn2:outgoing>_29CCA4F9-A127-4DB6-8DE9-36EDFFC8CE93</bpmn2:outgoing>
-    </bpmn2:startEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="InformUser">
-      <bpmndi:BPMNShape id="shape__214CB051-BEEF-415A-8372-D4C12BA449BF" bpmnElement="_214CB051-BEEF-415A-8372-D4C12BA449BF">
-        <dc:Bounds height="56" width="56" x="346" y="406"/>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__AE354ED0-5F2B-4CE8-A649-F478A7337067" bpmnElement="_AE354ED0-5F2B-4CE8-A649-F478A7337067">
         <dc:Bounds height="56" width="56" x="582" y="406"/>
       </bpmndi:BPMNShape>
@@ -142,6 +139,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__6762DAAB-858E-490B-AA3A-B77B8A903ECD" bpmnElement="_6762DAAB-858E-490B-AA3A-B77B8A903ECD">
         <dc:Bounds height="56" width="56" x="928" y="494"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__214CB051-BEEF-415A-8372-D4C12BA449BF" bpmnElement="_214CB051-BEEF-415A-8372-D4C12BA449BF">
+        <dc:Bounds height="56" width="56" x="346" y="406"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__EB32D1FC-DA20-49AD-A6BC-B723556905E2" bpmnElement="_EB32D1FC-DA20-49AD-A6BC-B723556905E2">
         <dc:Bounds height="393" width="1306" x="254" y="261"/>
@@ -195,7 +195,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_oPTBUPNlEDu0PNUwUhoy8A</bpmn2:source>
-    <bpmn2:target>_oPTBUPNlEDu0PNUwUhoy8A</bpmn2:target>
+    <bpmn2:source>_jGSBMPjYEDuFcbqeWaEcaw</bpmn2:source>
+    <bpmn2:target>_jGSBMPjYEDuFcbqeWaEcaw</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_uRU8kPNiEDuFHMWROwCuFA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_mPXSAPjYEDuSYtc5jfHBzA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_acknowledgeItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="_userItem" structureRef="de.benevolo.entities.user.PlatformUser"/>
   <bpmn2:itemDefinition id="__B944B9E5-7FFE-4DB3-8292-250860593B67_userInputXItem" structureRef="de.benevolo.entities.user.PlatformUser"/>
   <bpmn2:itemDefinition id="informFinanceType" structureRef="de.benevolo.entities.user.PlatformUser"/>
   <bpmn2:itemDefinition id="__449E19FB-FD01-415A-A632-E74AA54258DF_acknowledgeFinanceOutputXItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="acknowledgeFinanceType" structureRef="Boolean"/>
-  <bpmn2:itemDefinition id="_8988F3B0-82F2-4FE2-AA60-327591E6C7FF" structureRef=""/>
-  <bpmn2:itemDefinition id="_749B2F90-57E3-497E-9174-20368AA30E0B" structureRef=""/>
-  <bpmn2:message id="_uRVjoPNiEDuFHMWROwCuFA" itemRef="informFinanceType" name="informFinance"/>
-  <bpmn2:message id="_uRVjofNiEDuFHMWROwCuFA" itemRef="acknowledgeFinanceType" name="acknowledgeFinance"/>
-  <bpmn2:collaboration id="_D1B58347-6367-4050-9B32-47B4E344848C" name="Default Collaboration">
-    <bpmn2:participant id="_0E7EC031-8DDF-4C98-9B71-13B2FF724F57" name="Pool Participant" processRef="InformFinance"/>
+  <bpmn2:itemDefinition id="_184C97B4-D7BE-4581-B9E5-79712D242230" structureRef=""/>
+  <bpmn2:itemDefinition id="_A1D566D1-5276-450D-86FA-B13332A1765D" structureRef=""/>
+  <bpmn2:message id="_mPX5EPjYEDuSYtc5jfHBzA" itemRef="informFinanceType" name="informFinance"/>
+  <bpmn2:message id="_mPX5EfjYEDuSYtc5jfHBzA" itemRef="acknowledgeFinanceType" name="acknowledgeFinance"/>
+  <bpmn2:collaboration id="_91C30412-CFA0-4FB4-8B50-B311D04B30C5" name="Default Collaboration">
+    <bpmn2:participant id="_AF7FD75E-BE39-4D83-ABF6-BE19F763D38E" name="Pool Participant" processRef="InformFinance"/>
   </bpmn2:collaboration>
   <bpmn2:process id="InformFinance" drools:packageName="de.benevolo" drools:version="1.0" drools:adHoc="false" name="InformFinance" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
@@ -64,10 +64,10 @@
       <bpmn2:outgoing>_D4842E4F-F7AD-458F-9945-04A2429CA532</bpmn2:outgoing>
       <bpmn2:outgoing>_C0347FD5-141A-4E9D-BBD3-AECC3D9E5897</bpmn2:outgoing>
     </bpmn2:eventBasedGateway>
-    <bpmn2:endEvent id="_6A5CBEFB-3081-4E0C-9D8C-878514F7DB27" name="Closing Inform of Change">
+    <bpmn2:endEvent id="_6A5CBEFB-3081-4E0C-9D8C-878514F7DB27" name="Finance has been informed">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Closing Inform of Change]]></drools:metaValue>
+          <drools:metaValue><![CDATA[Finance has been informed]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_FCE5BD76-B978-4346-9B7A-E5856E8D02EF</bpmn2:incoming>
@@ -88,7 +88,7 @@
       <bpmn2:outputSet>
         <bpmn2:dataOutputRefs>_449E19FB-FD01-415A-A632-E74AA54258DF_acknowledgeFinanceOutputX</bpmn2:dataOutputRefs>
       </bpmn2:outputSet>
-      <bpmn2:messageEventDefinition drools:msgref="acknowledgeFinance" messageRef="_uRVjofNiEDuFHMWROwCuFA"/>
+      <bpmn2:messageEventDefinition drools:msgref="acknowledgeFinance" messageRef="_mPX5EfjYEDuSYtc5jfHBzA"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:intermediateThrowEvent id="_B944B9E5-7FFE-4DB3-8292-250860593B67" name="Send Information">
       <bpmn2:extensionElements>
@@ -106,7 +106,7 @@
       <bpmn2:inputSet>
         <bpmn2:dataInputRefs>_B944B9E5-7FFE-4DB3-8292-250860593B67_userInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="informFinance" messageRef="_uRVjoPNiEDuFHMWROwCuFA"/>
+      <bpmn2:messageEventDefinition drools:msgref="informFinance" messageRef="_mPX5EPjYEDuSYtc5jfHBzA"/>
     </bpmn2:intermediateThrowEvent>
     <bpmn2:startEvent id="_972AF8E4-FE2A-4E0D-A91A-615D492F9973" name="Inform Finance About Change">
       <bpmn2:extensionElements>
@@ -192,7 +192,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_uRU8kPNiEDuFHMWROwCuFA</bpmn2:source>
-    <bpmn2:target>_uRU8kPNiEDuFHMWROwCuFA</bpmn2:target>
+    <bpmn2:source>_mPXSAPjYEDuSYtc5jfHBzA</bpmn2:source>
+    <bpmn2:target>_mPXSAPjYEDuSYtc5jfHBzA</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
