@@ -33,7 +33,7 @@ public class MembershipService {
 
         // Mocking a little bit, because DB has no entrys
         AssociationRole role = new AssociationRole("Mitglied", "Vordefiniertes Mitglied", false, false, false);
-        
+
         Membership membership = new Membership(null, user.getId(), role);
         membership.setMembershipId(null);
         membership.getAssociationRole().setAssociationRoleId(null);
@@ -54,7 +54,7 @@ public class MembershipService {
         Boolean result = false;
 
         try {
-            //get all "members / memberships" of association 
+            // get all "members / memberships" of association
             List<Membership> membershipsList = associationRestClient.getMembershipsByAssociationId(association.getId());
 
             LOGGER.info("Username: " + user.getName());
@@ -62,7 +62,7 @@ public class MembershipService {
             LOGGER.info("UserId: " + user.getId());
             LOGGER.info("Generated List: " + membershipsList);
 
-            //Check if user is already member of association
+            // Check if user is already member of association
             if (membershipsList.isEmpty() == true) {
                 LOGGER.info("Generated List EMPTY?: " + membershipsList.isEmpty());
             } else {
@@ -78,6 +78,43 @@ public class MembershipService {
             LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
         }
         return result;
+    }
+
+    @Transactional
+    public Boolean deleteMembership( PlatformUser user, Association association) {
+
+        Membership exists = new Membership();
+
+       try {
+            // get all "members / memberships" of association
+            List<Membership> membershipsList = associationRestClient.getMembershipsByAssociationId(association.getId());
+
+            // Check if user is already member of association
+            if (membershipsList.isEmpty() == true) {
+                LOGGER.info("Generated List EMPTY?: " + membershipsList.isEmpty());
+                return false;
+            } else {
+                for (Membership membership : membershipsList) {
+                    LOGGER.info("MeberId: " + membership.getUserId());
+                    if (membership.getUserId() == user.getId()) {
+                        LOGGER.info("EXISTS: " + membership.getMembershipId());
+                        exists = membership;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
+        }
+
+        //delete
+        try {
+            associationRestClient.deleteMembership(exists.getMembershipId());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return true;
     }
 
 }

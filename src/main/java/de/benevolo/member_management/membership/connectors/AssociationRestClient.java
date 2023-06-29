@@ -3,7 +3,7 @@ package de.benevolo.member_management.membership.connectors;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -34,5 +34,9 @@ public interface AssociationRestClient {
     @POST
     @Path("memberships/")
     List<Membership> getMembershipsByAssociationId(Long id);
+
+    @DELETE
+    @Path("deleteMembership/")
+    Boolean deleteMembership(Long id);
 
 }
