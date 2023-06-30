@@ -21,7 +21,8 @@ public class MembershipServiceTest {
     @RestClient
     AssociationRestClient associationRestClient;
 
-    // Change the base URL here
+    // Change the base URL here -> Memberhip Repository is part of different Domain
+    // Change base URI can lead to failure in other tests -> @Disabled
     private static final String ORIGINAL_BASE_URL = baseURI;
     private static final String BASE_URL = "http://localhost:8083/";
 
