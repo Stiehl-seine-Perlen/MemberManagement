@@ -1,12 +1,12 @@
 package de.benevolo.member_management.membership.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,11 +14,8 @@ import de.benevolo.entities.association.Association;
 import de.benevolo.entities.association.AssociationRole;
 import de.benevolo.entities.association.Membership;
 import de.benevolo.entities.user.PlatformUser;
-
 import de.benevolo.member_management.membership.connectors.AssociationRestClient;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-//import de.benevolo.association.repositories.AssociationRepository;
 @ApplicationScoped
 public class MembershipService {
 
@@ -40,10 +37,8 @@ public class MembershipService {
 
         try {
             associationRestClient.addMembership(membership);
-            LOGGER.info("PERSISTET -->  " + membership.toString());
             return true;
         } catch (Exception e) {
-            LOGGER.error("EXCEPTION -->  " + e);
             return false;
         }
 
@@ -57,17 +52,12 @@ public class MembershipService {
             // get all "members / memberships" of association
             List<Membership> membershipsList = associationRestClient.getMembershipsByAssociationId(association.getId());
 
-            LOGGER.info("Username: " + user.getName());
-            LOGGER.info("Assoname: " + association.getAssociationName());
-            LOGGER.info("UserId: " + user.getId());
-            LOGGER.info("Generated List: " + membershipsList);
-
             // Check if user is already member of association
             if (membershipsList.isEmpty() == true) {
-                LOGGER.info("Generated List EMPTY?: " + membershipsList.isEmpty());
+                LOGGER.info("Is generated List EMPTY? --> " + membershipsList.isEmpty());
             } else {
                 for (Membership membership : membershipsList) {
-                    LOGGER.info("MeberId: " + membership.getUserId());
+
                     if (membership.getUserId() == user.getId()) {
                         result = true;
                     }
@@ -75,29 +65,27 @@ public class MembershipService {
             }
 
         } catch (Exception e) {
-            LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
+            LOGGER.error("Exception -> Error: Something wrong fetching data from Membership Repository");
         }
         return result;
     }
 
     @Transactional
-    public Boolean deleteMembership( PlatformUser user, Association association) {
+    public Boolean deleteMembership(PlatformUser user, Association association) {
 
         Membership exists = new Membership();
 
-       try {
+        try {
             // get all "members / memberships" of association
             List<Membership> membershipsList = associationRestClient.getMembershipsByAssociationId(association.getId());
 
             // Check if user is already member of association
             if (membershipsList.isEmpty() == true) {
-                LOGGER.info("Generated List EMPTY?: " + membershipsList.isEmpty());
+                LOGGER.info("Is generated List EMPTY? --> " + membershipsList.isEmpty());
                 return false;
             } else {
                 for (Membership membership : membershipsList) {
-                    LOGGER.info("MeberId: " + membership.getUserId());
                     if (membership.getUserId() == user.getId()) {
-                        LOGGER.info("EXISTS: " + membership.getMembershipId());
                         exists = membership;
                     }
                 }
@@ -107,13 +95,12 @@ public class MembershipService {
             LOGGER.error("Exception -> Error: Something wrong in fetching Data from Memberships");
         }
 
-        //delete
+        // delete
         try {
             associationRestClient.deleteMembership(exists.getMembershipId());
         } catch (Exception e) {
-            // TODO: handle exception
+            LOGGER.error("Error: Deleting Membership");
         }
-
         return true;
     }
 
