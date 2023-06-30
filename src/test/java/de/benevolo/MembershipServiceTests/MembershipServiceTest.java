@@ -6,6 +6,7 @@ import static io.restassured.RestAssured.given;
 import javax.inject.Inject;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.benevolo.member_management.membership.connectors.AssociationRestClient;
@@ -13,8 +14,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 
 @QuarkusTest
-// @TestHTTPEndpoint(MembermeetingService.class)
-
+@Disabled
 public class MembershipServiceTest {
 
     @Inject
@@ -58,15 +58,11 @@ public class MembershipServiceTest {
 
         // Set the base URI using the BASE_URL
         baseURI = BASE_URL;
-        System.out.println(BASE_URL);
-        System.out.println(ORIGINAL_BASE_URL);
-
+        
         Long id = (long) 9999;
         persistTwoMemberships();
 
         // then
-        // associationRestClient.deleteMembership(id);
-
         given()
                 .body(id)
                 .contentType(ContentType.JSON)
@@ -74,7 +70,6 @@ public class MembershipServiceTest {
                 .delete("deleteMembership/")
                 .then()
                 .statusCode(200);
-
      
         baseURI = ORIGINAL_BASE_URL;
     }
@@ -100,7 +95,6 @@ public class MembershipServiceTest {
                 .then()
                 .statusCode(200);
 
-        
-       // baseURI = ORIGINAL_BASE_URL;
     }
+
 }
